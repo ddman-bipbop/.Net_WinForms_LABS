@@ -107,6 +107,7 @@ namespace WindowsFormsApp_FOR_LABS
         private void button7_Click(object sender, EventArgs e)
         {
             double d;
+            
             if (double.TryParse(textBox7.Text, out d))
             {
                 //Переменная d хранит число, если преобразование удалось
