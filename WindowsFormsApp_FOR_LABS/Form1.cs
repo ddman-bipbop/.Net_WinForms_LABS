@@ -106,14 +106,13 @@ namespace WindowsFormsApp_FOR_LABS
 
         private void button7_Click(object sender, EventArgs e)
         {
-            double d;
-            
-            if (double.TryParse(textBox7.Text, out d))
+            comboBox2.Items.Clear();
+            for (int i = 0; i < textBox7.Lines.Length; i++)
             {
-                //Переменная d хранит число, если преобразование удалось
-
-                comboBox2.Items.Add(d.ToString());
+                if (double.TryParse(textBox7.Lines[i], out double numvalue))
+                    comboBox2.Items.Add(textBox7.Lines[i]);
             }
+
 
         }
 
@@ -125,6 +124,92 @@ namespace WindowsFormsApp_FOR_LABS
         private void textBox7_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            textBox_tab5.Clear();
+            double eps = ((double)numericUpDown2.Value);
+            double x = 1;
+            double summary = 0;
+            double element = 0;
+            do
+            {
+                element = 1 / x;
+                textBox_tab5.Text += (element.ToString() + Environment.NewLine);
+                summary += element;
+                x++;
+
+            } while (element > eps);
+
+        }
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox_tab5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            textBox9.Clear();
+            string[] text1 = textBox8.Lines;
+            for (int i = text1.Length-1; i > 0 ; i--)
+            {
+                if (!(double.TryParse(text1[i], out double num)))
+                {
+                    textBox9.Text += text1[i] + Environment.NewLine;
+                }
+            }
+        }
+
+        private void textBox8_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox_tab7_a_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_tab7_result_Click(object sender, EventArgs e)
+        {
+            textBox_tab7_Res.Clear();
+            bool text1 = decimal.TryParse(textBox_tab7_a.Text, out decimal a);
+            bool text2 = decimal.TryParse(textBox_tab7_b.Text, out decimal b);
+            bool text3 = decimal.TryParse(textBox_tab7_h.Text, out decimal h);
+
+            if (!(text1 && text2 && text3) || (a > b || h < 0 || h > Math.Abs(b - a)))
+            {
+                textBox_tab7_Res.Text = "Переменные введены некорректно! Читать условие...";
+                return;
+            }
+            double f;
+            for (decimal i = a; i <= b; i += h)
+            {
+                f = Math.Sin((double)i) / (Math.Abs((double)i) + 1);
+                textBox_tab7_Res.Text += " x= " + i.ToString() + "; f(x)= " + f.ToString() + Environment.NewLine;
+            }
         }
     }
 }
