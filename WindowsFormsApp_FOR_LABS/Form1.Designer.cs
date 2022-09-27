@@ -51,23 +51,23 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.button8 = new System.Windows.Forms.Button();
             this.textBox_tab5 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
             this.button9 = new System.Windows.Forms.Button();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_tab7_b = new System.Windows.Forms.TextBox();
             this.textBox_tab7_a = new System.Windows.Forms.TextBox();
             this.textBox_tab7_h = new System.Windows.Forms.TextBox();
             this.textBox_tab7_Res = new System.Windows.Forms.TextBox();
             this.button_tab7_result = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -75,9 +75,9 @@
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -320,37 +320,29 @@
             this.tabPage5.Text = "Пятая";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // tabPage6
+            // textBox_tab5
             // 
-            this.tabPage6.Controls.Add(this.button9);
-            this.tabPage6.Controls.Add(this.textBox9);
-            this.tabPage6.Controls.Add(this.textBox8);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(623, 340);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Шестая";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.textBox_tab5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_tab5.Location = new System.Drawing.Point(365, 5);
+            this.textBox_tab5.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_tab5.Multiline = true;
+            this.textBox_tab5.Name = "textBox_tab5";
+            this.textBox_tab5.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox_tab5.Size = new System.Drawing.Size(256, 243);
+            this.textBox_tab5.TabIndex = 3;
+            this.textBox_tab5.TextChanged += new System.EventHandler(this.textBox_tab5_TextChanged);
             // 
-            // tabPage7
+            // button8
             // 
-            this.tabPage7.Controls.Add(this.label4);
-            this.tabPage7.Controls.Add(this.label3);
-            this.tabPage7.Controls.Add(this.label2);
-            this.tabPage7.Controls.Add(this.label1);
-            this.tabPage7.Controls.Add(this.textBox_tab7_b);
-            this.tabPage7.Controls.Add(this.textBox_tab7_a);
-            this.tabPage7.Controls.Add(this.textBox_tab7_h);
-            this.tabPage7.Controls.Add(this.textBox_tab7_Res);
-            this.tabPage7.Controls.Add(this.button_tab7_result);
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(623, 340);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "Седьмая";
-            this.tabPage7.UseVisualStyleBackColor = true;
+            this.button8.Location = new System.Drawing.Point(63, 127);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(100, 54);
+            this.button8.TabIndex = 2;
+            this.button8.Text = "button8";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // numericUpDown2
             // 
@@ -359,7 +351,7 @@
             1,
             0,
             0,
-            196608});
+            262144});
             this.numericUpDown2.Location = new System.Drawing.Point(33, 47);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             1,
@@ -381,39 +373,28 @@
             393216});
             this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
-            // button8
+            // tabPage6
             // 
-            this.button8.Location = new System.Drawing.Point(63, 127);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(100, 54);
-            this.button8.TabIndex = 2;
-            this.button8.Text = "button8";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.tabPage6.Controls.Add(this.button9);
+            this.tabPage6.Controls.Add(this.textBox9);
+            this.tabPage6.Controls.Add(this.textBox8);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(623, 340);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Шестая";
+            this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // textBox_tab5
+            // button9
             // 
-            this.textBox_tab5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_tab5.Location = new System.Drawing.Point(365, 5);
-            this.textBox_tab5.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_tab5.Multiline = true;
-            this.textBox_tab5.Name = "textBox_tab5";
-            this.textBox_tab5.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox_tab5.Size = new System.Drawing.Size(256, 243);
-            this.textBox_tab5.TabIndex = 3;
-            this.textBox_tab5.TextChanged += new System.EventHandler(this.textBox_tab5_TextChanged);
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(8, 19);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox8.Size = new System.Drawing.Size(211, 315);
-            this.textBox8.TabIndex = 0;
-            this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged_1);
+            this.button9.Location = new System.Drawing.Point(234, 130);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(145, 61);
+            this.button9.TabIndex = 2;
+            this.button9.Text = "button9";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // textBox9
             // 
@@ -425,15 +406,62 @@
             this.textBox9.TabIndex = 1;
             this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
             // 
-            // button9
+            // textBox8
             // 
-            this.button9.Location = new System.Drawing.Point(234, 130);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(145, 61);
-            this.button9.TabIndex = 2;
-            this.button9.Text = "button9";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.textBox8.Location = new System.Drawing.Point(8, 19);
+            this.textBox8.Multiline = true;
+            this.textBox8.Name = "textBox8";
+            this.textBox8.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox8.Size = new System.Drawing.Size(211, 315);
+            this.textBox8.TabIndex = 0;
+            this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged_1);
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.label4);
+            this.tabPage7.Controls.Add(this.label3);
+            this.tabPage7.Controls.Add(this.label2);
+            this.tabPage7.Controls.Add(this.label1);
+            this.tabPage7.Controls.Add(this.textBox_tab7_b);
+            this.tabPage7.Controls.Add(this.textBox_tab7_a);
+            this.tabPage7.Controls.Add(this.textBox_tab7_h);
+            this.tabPage7.Controls.Add(this.textBox_tab7_Res);
+            this.tabPage7.Controls.Add(this.button_tab7_result);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(623, 340);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "Седьмая";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(413, 175);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(13, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "h";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(413, 123);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(13, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "b";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(413, 74);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(13, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "a";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -499,34 +527,6 @@
             this.button_tab7_result.UseVisualStyleBackColor = true;
             this.button_tab7_result.Click += new System.EventHandler(this.button_tab7_result_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(413, 74);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(13, 13);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "a";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(413, 123);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(13, 13);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "b";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(413, 175);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(13, 13);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "h";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -552,11 +552,11 @@
             this.tabPage4.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
 
         }
