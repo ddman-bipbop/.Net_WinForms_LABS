@@ -136,7 +136,7 @@ namespace WindowsFormsApp_FOR_LABS
             do
             {
                 element = 1 / x;
-                textBox_tab5.Text += (element.ToString() + Environment.NewLine);
+                textBox_tab5.Text += summary.ToString() + Environment.NewLine;
                 summary += element;
                 x++;
 
