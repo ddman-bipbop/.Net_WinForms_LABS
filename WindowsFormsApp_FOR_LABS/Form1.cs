@@ -38,7 +38,7 @@ namespace WindowsFormsApp_FOR_LABS
             FormClient formClient = new FormClient(stanok_);
             if (formClient.ShowDialog() == DialogResult.OK)
             {
-                stanok_ = formClient.Client;
+                stanok_ = formClient.stanok_;
             }
 
         }
