@@ -58,6 +58,12 @@
     <Compile Include="FormClient.Designer.cs">
       <DependentUpon>FormClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRepair.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRepair.Designer.cs">
+      <DependentUpon>FormRepair.cs</DependentUpon>
+    </Compile>
     <Compile Include="IValidatable.cs" />
     <Compile Include="NameRepair.cs" />
     <Compile Include="Program.cs" />
@@ -69,6 +75,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormClient.resx">
       <DependentUpon>FormClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRepair.resx">
+      <DependentUpon>FormRepair.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

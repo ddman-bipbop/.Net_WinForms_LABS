@@ -19,7 +19,7 @@ namespace WindowsFormsApp_FOR_LABS
             InitializeComponent();
             stanok_ = stanok;
             textBox1.Text = stanok_.state_;
-            textBox2.Text = stanok_.date_.Minute.ToString();
+            textBox2.Text = stanok_.date_.ToString();
             textBox3.Text = stanok_.mark_;
         }
 
@@ -52,9 +52,18 @@ namespace WindowsFormsApp_FOR_LABS
         private void button1_Click(object sender, EventArgs e)
         {
             stanok_.state_ = textBox1.Text;      
-            stanok_.date_.AddMinutes(Convert.ToDouble(textBox2.Text));
-            stanok_.mark_ = textBox3.Text;
-            
+            stanok_.date_= Convert.ToDateTime(textBox2.Text);
+            stanok_.mark_ = textBox3.Text;   
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

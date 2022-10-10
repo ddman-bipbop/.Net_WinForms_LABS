@@ -30,9 +30,19 @@ namespace WindowsFormsApp_FOR_LABS
         private void Form1_Load_1(object sender, EventArgs e)
         {
 
+        }   
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }   
+
+        private void Form1_Load_2(object sender, EventArgs e)
+        {
+
         }
 
-        private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             stanok_ = new Stanok();
             FormClient formClient = new FormClient(stanok_);
@@ -40,17 +50,34 @@ namespace WindowsFormsApp_FOR_LABS
             {
                 stanok_ = formClient.stanok_;
             }
-            
         }
 
-        private void редактироватьToolStripMenuItem_Click(object sender, EventArgs e)
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormClient formClient = new FormClient(stanok_);
             if (formClient.ShowDialog() == DialogResult.OK)
             {
                 stanok_ = formClient.stanok_;
             }
+        }
 
+        private void addToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            nameRepair_ = new NameRepair();
+            FormRepair formClient = new FormRepair(nameRepair_);
+            if (formClient.ShowDialog() == DialogResult.OK)
+            {
+                nameRepair_ = formClient.nameRepair_;
+            }
+        }
+
+        private void editToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormRepair formClient = new FormRepair(nameRepair_);
+            if (formClient.ShowDialog() == DialogResult.OK)
+            {
+                nameRepair_ = formClient.nameRepair_;
+            }
         }
     }
 }
