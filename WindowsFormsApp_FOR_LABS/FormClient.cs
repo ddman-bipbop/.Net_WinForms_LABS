@@ -19,7 +19,7 @@ namespace WindowsFormsApp_FOR_LABS
             InitializeComponent();
             stanok_ = stanok;
             textBox1.Text = stanok_.state_;
-            textBox2.Text = stanok_.date_.ToString();
+            textBox2.Text = stanok_.date_.Minute.ToString();
             textBox3.Text = stanok_.mark_;
         }
 
@@ -51,17 +51,10 @@ namespace WindowsFormsApp_FOR_LABS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            stanok_.state_ = textBox1.Text;
-            stanok_.date_ = textBox2.Text;
-            stanok_.date_.AddMinutes(textBox2.Text);
-            Client.LastName = textBoxLastName.Text;
-
-            Client.Passport.Issuer = textBoxIssuer.Text;
-            Client.Passport.Seria = textBoxSeria.Text;
-            Client.Passport.Number = textBoxNumber.Text;
-            Client.Passport.Date = dateTimePickerDate.Value;
-
+            stanok_.state_ = textBox1.Text;      
+            stanok_.date_.AddMinutes(Convert.ToDouble(textBox2.Text));
+            stanok_.mark_ = textBox3.Text;
+            
         }
     }
-}
 }

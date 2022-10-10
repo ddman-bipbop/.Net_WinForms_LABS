@@ -40,6 +40,16 @@ namespace WindowsFormsApp_FOR_LABS
             {
                 stanok_ = formClient.stanok_;
             }
+            
+        }
+
+        private void редактироватьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormClient formClient = new FormClient(stanok_);
+            if (formClient.ShowDialog() == DialogResult.OK)
+            {
+                stanok_ = formClient.stanok_;
+            }
 
         }
     }
