@@ -13,7 +13,7 @@ namespace WindowsFormsApp_FOR_LABS
 {
     public partial class Form1 : Form
     {
-        private Stanok stanok_;
+        private Craftbanch stanok_;
         private NameRepair nameRepair_;
 
         public Form1()
@@ -44,7 +44,7 @@ namespace WindowsFormsApp_FOR_LABS
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            stanok_ = new Stanok();
+            stanok_ = new Craftbanch();
             FormClient formClient = new FormClient(stanok_);
             if (formClient.ShowDialog() == DialogResult.OK)
             {

@@ -11,7 +11,7 @@ namespace lab4
         /// <summary>
         /// Название станка
         /// </summary>
-        Stanok nameStanok_ { get; set; } = new Stanok();
+        Craftbanch nameStanok_ { get; set; } = new Craftbanch();
         /// <summary>
         /// Вид ремонта
         /// </summary>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lab4
 {
-    public class Stanok
+    public class Craftbanch
     {
         /// <summary>
         /// Страна

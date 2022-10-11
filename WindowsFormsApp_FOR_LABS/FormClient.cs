@@ -13,8 +13,8 @@ namespace WindowsFormsApp_FOR_LABS
 {
     public partial class FormClient : Form
     {
-        public Stanok stanok_ { get; }
-        public FormClient(Stanok stanok)
+        public Craftbanch stanok_ { get; }
+        public FormClient(Craftbanch stanok)
         {
             InitializeComponent();
             stanok_ = stanok;
