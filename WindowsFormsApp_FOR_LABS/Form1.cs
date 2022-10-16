@@ -48,7 +48,7 @@ namespace WindowsFormsApp_FOR_LABS
             FormClient formClient = new FormClient(stanok_);
             if (formClient.ShowDialog() == DialogResult.OK)
             {
-                stanok_ = formClient.stanok_;
+                stanok_ = formClient.Stanok;
             }
         }
 
@@ -57,7 +57,7 @@ namespace WindowsFormsApp_FOR_LABS
             FormClient formClient = new FormClient(stanok_);
             if (formClient.ShowDialog() == DialogResult.OK)
             {
-                stanok_ = formClient.stanok_;
+                stanok_ = formClient.Stanok;
             }
         }
 
@@ -67,7 +67,7 @@ namespace WindowsFormsApp_FOR_LABS
             FormRepair formClient = new FormRepair(nameRepair_);
             if (formClient.ShowDialog() == DialogResult.OK)
             {
-                nameRepair_ = formClient.nameRepair_;
+                nameRepair_ = formClient.NameRepair;
             }
         }
 
@@ -76,7 +76,7 @@ namespace WindowsFormsApp_FOR_LABS
             FormRepair formClient = new FormRepair(nameRepair_);
             if (formClient.ShowDialog() == DialogResult.OK)
             {
-                nameRepair_ = formClient.nameRepair_;
+                nameRepair_ = formClient.NameRepair;
             }
         }
     }

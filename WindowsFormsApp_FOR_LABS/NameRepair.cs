@@ -11,7 +11,7 @@ namespace lab4
         /// <summary>
         /// Название (вид) ремонта
         /// </summary>
-        public string Name { get; set; } = "midle repair";
+        public CategoryNameRepair Name { get; set; } = CategoryNameRepair.Current;
         /// <summary>
         /// Продолжительность
         /// </summary>

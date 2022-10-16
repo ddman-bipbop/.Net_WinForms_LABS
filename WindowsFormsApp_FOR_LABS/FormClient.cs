@@ -13,14 +13,14 @@ namespace WindowsFormsApp_FOR_LABS
 {
     public partial class FormClient : Form
     {
-        public Craftbanch stanok_ { get; }
+        public Craftbanch Stanok { get; }
         public FormClient(Craftbanch stanok)
         {
             InitializeComponent();
-            stanok_ = stanok;
-            textBox1.Text = stanok_.State;
-            textBox2.Text = stanok_.Date.ToString();
-            textBox3.Text = stanok_.Mark;
+            Stanok = stanok;
+            textBox1.Text = Stanok.State;
+            dateTimePicker1.Text = Stanok.Date.ToString();
+            textBox3.Text = Stanok.Mark;
         }
 
 
@@ -51,9 +51,10 @@ namespace WindowsFormsApp_FOR_LABS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            stanok_.State = textBox1.Text;      
-            stanok_.Date= Convert.ToDateTime(textBox2.Text);
-            stanok_.Mark = textBox3.Text;   
+            Stanok.State = textBox1.Text;
+            //Stanok.Date= Convert.ToDateTime(textBox2.Text);
+            Stanok.Date = Convert.ToDateTime(dateTimePicker1.Text);
+            Stanok.Mark = textBox3.Text;   
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -62,6 +63,11 @@ namespace WindowsFormsApp_FOR_LABS
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
         }
