@@ -11,14 +11,20 @@ namespace lab4
         /// <summary>
         /// Страна
         /// </summary>
-        public string state_ { get; set; } = "Bryansk";
+        public string State { get; set; } = "Bryansk";
         /// <summary>
         /// Дата
         /// </summary>
-        public DateTime date_ { get; set; } = DateTime.Today;
+        public DateTime Date { get; set; } = DateTime.Today;
         /// <summary>
         /// Марка станка
         /// </summary>
-        public string mark_ { get; set; } = "Mark 2";
+        public string Mark { get; set; } = "Mark 2";
+
+        public override string ToString()
+        {
+            return $"Страна: {State}\r\nДата: {Date}\r\nМарка:{Mark}\r\n";
+        }
+
     }
 }

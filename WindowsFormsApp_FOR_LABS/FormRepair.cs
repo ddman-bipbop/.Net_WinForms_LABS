@@ -18,10 +18,10 @@ namespace WindowsFormsApp_FOR_LABS
         {
             InitializeComponent();
             nameRepair_ = nameRepair;
-            textBox1.Text = nameRepair_.name_;
-            textBox2.Text = nameRepair_.duration_.ToString();
-            textBox3.Text = nameRepair_.price_.ToString();
-            textBox4.Text = nameRepair_.commet_;
+            textBox1.Text = nameRepair_.Name;
+            textBox2.Text = nameRepair_.Duration.ToString();
+            textBox3.Text = nameRepair_.Price.ToString();
+            textBox4.Text = nameRepair_.Commet;
         }
 
         private void FormRepair_Load(object sender, EventArgs e)
@@ -35,10 +35,10 @@ namespace WindowsFormsApp_FOR_LABS
         }    
         private void button1_Click(object sender, EventArgs e)
         {
-            nameRepair_.name_ = textBox1.Text;
-            nameRepair_.duration_ = Convert.ToInt16(textBox2.Text);
-            nameRepair_.price_ = Convert.ToDouble(textBox3.Text);
-            nameRepair_.commet_ = textBox4.Text;
+            nameRepair_.Name = textBox1.Text;
+            nameRepair_.Duration = Convert.ToInt16(textBox2.Text);
+            nameRepair_.Price = Convert.ToDouble(textBox3.Text);
+            nameRepair_.Commet = textBox4.Text;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

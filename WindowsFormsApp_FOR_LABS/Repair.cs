@@ -11,19 +11,23 @@ namespace lab4
         /// <summary>
         /// Название станка
         /// </summary>
-        Craftbanch nameStanok_ { get; set; } = new Craftbanch();
+        Craftbanch NameStanok { get; set; } = new Craftbanch();
         /// <summary>
         /// Вид ремонта
         /// </summary>
-        NameRepair nameRepair_ { get; set; } = new NameRepair();
+        NameRepair NameRepair { get; set; } = new NameRepair();
         /// <summary>
         /// Дата начала ремонта
         /// </summary>
-        public DateTime dateStart_ { get; set; } = DateTime.Now;
+        public DateTime DateStart { get; set; } = DateTime.Now;
         /// <summary>
         /// Примечание
         /// </summary>
-        public string commet_ { get; set; } = "No comments";
-   
+        public string Commet { get; set; } = "No comments";
+
+        public override string ToString()
+        {
+            return $"Название станка: {NameStanok}\r\nВид ремонта: {NameRepair}\r\nДата начала: {DateStart}\r\nПримечание: {Commet} ";
+        }
     }
 }

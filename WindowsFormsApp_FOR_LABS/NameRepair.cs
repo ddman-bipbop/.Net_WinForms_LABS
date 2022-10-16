@@ -11,19 +11,23 @@ namespace lab4
         /// <summary>
         /// Название (вид) ремонта
         /// </summary>
-        public string name_ { get; set; } = "midle repair";
+        public string Name { get; set; } = "midle repair";
         /// <summary>
         /// Продолжительность
         /// </summary>
-        public int duration_ { get; set; } = 28;
+        public int Duration { get; set; } = 28;
         /// <summary>
         /// Цена
         /// </summary>
-        public double price_ { get; set; } = 228.24;
+        public double Price { get; set; } = 228.24;
         /// <summary>
         /// Примечание
         /// </summary>
-        public string commet_ { get; set; } = "No comments";
+        public string Commet { get; set; } = "No comments";
 
+        public override string ToString()
+        {
+            return $"Название: {Name}\r\nПродолжительность: {Duration}\r\nЦена: {Price}\r\nПримечание: {Commet}\r\n";
+        }
     }
 }
