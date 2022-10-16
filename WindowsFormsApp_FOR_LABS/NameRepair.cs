@@ -4,10 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lab4
+namespace lab5
 {
     public class NameRepair
     {
+        /// <summary>
+        /// Уникальный идентификатор нового клиента (аналог автоинкремента)
+        /// </summary>
+        private static int _newNameRepairId;
+
+        private static int NewNameRepairId
+        {
+            get
+            {
+                _newNameRepairId++;
+                return _newNameRepairId;
+            }
+        }
+        /// <summary>
+        /// Уникальный идентификатор клиента
+        /// </summary>
+        public int NameRepairId { get; }
+
+        public NameRepair() 
+        {
+            NameRepairId = NewNameRepairId;
+        }
         /// <summary>
         /// Название (вид) ремонта
         /// </summary>
@@ -27,7 +49,7 @@ namespace lab4
 
         public override string ToString()
         {
-            return $"Название: {Name}\r\nПродолжительность: {Duration}\r\nЦена: {Price}\r\nПримечание: {Commet}\r\n";
+            return $"Название: {Name}\r\n Продолжительность: {Duration}\r\n Цена: {Price}\r\n Примечание: {Commet}\r\n";
         }
     }
 }

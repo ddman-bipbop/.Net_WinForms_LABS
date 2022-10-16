@@ -4,18 +4,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lab4
+namespace lab5
 {
     public class Repair
     {
         /// <summary>
+        /// Уникальный идентификатор нового клиента (аналог автоинкремента)
+        /// </summary>
+        private static int _newRepairId;
+
+        private static int NewRepairId
+        {
+            get
+            {
+                _newRepairId++;
+                return _newRepairId;
+            }
+        }
+        /// <summary>
+        /// Уникальный идентификатор клиента
+        /// </summary>
+        public int RepairId { get; }
+
+        public Repair()
+        {
+            RepairId = NewRepairId;
+        }
+        /// <summary>
         /// Название станка
         /// </summary>
-        Craftbanch NameStanok { get; set; } = new Craftbanch();
+        public Craftbanch NameStanok { get; set; } = new Craftbanch();
         /// <summary>
         /// Вид ремонта
         /// </summary>
-        NameRepair NameRepair { get; set; } = new NameRepair();
+        public NameRepair NameRepair { get; set; } = new NameRepair();
         /// <summary>
         /// Дата начала ремонта
         /// </summary>
@@ -27,7 +49,7 @@ namespace lab4
 
         public override string ToString()
         {
-            return $"Название станка: {NameStanok}\r\nВид ремонта: {NameRepair}\r\nДата начала: {DateStart}\r\nПримечание: {Commet} ";
+            return $"{NameStanok.Mark}\r\n {NameRepair.Name}\r\n {DateStart}\r\n {Commet} ";
         }
     }
 }

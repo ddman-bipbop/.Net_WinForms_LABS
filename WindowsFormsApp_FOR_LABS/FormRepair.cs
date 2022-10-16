@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using lab4;
+using lab5;
 
 namespace WindowsFormsApp_FOR_LABS
 {

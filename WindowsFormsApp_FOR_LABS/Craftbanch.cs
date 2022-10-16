@@ -4,10 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lab4
+namespace lab5
 {
     public class Craftbanch
     {
+        /// <summary>
+        /// Уникальный идентификатор нового клиента (аналог автоинкремента)
+        /// </summary>
+        private static int _newCraftbanchId;
+
+        private static int NewCraftbanchId
+        {
+            get
+            {
+                _newCraftbanchId++;
+                return _newCraftbanchId;
+            }
+        }
+        /// <summary>
+        /// Уникальный идентификатор клиента
+        /// </summary>
+        public int CraftbanchirId { get; }
+
+        public Craftbanch() 
+        {
+            CraftbanchirId = NewCraftbanchId;
+        }
         /// <summary>
         /// Страна
         /// </summary>
@@ -23,7 +45,7 @@ namespace lab4
 
         public override string ToString()
         {
-            return $"Страна: {State}\r\nДата: {Date}\r\nМарка:{Mark}\r\n";
+            return $"Страна: {State}\r\n Дата: {Date}\r\n Марка:{Mark}\r\n";
         }
 
     }
