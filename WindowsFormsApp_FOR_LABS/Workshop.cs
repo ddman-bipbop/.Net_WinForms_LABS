@@ -9,54 +9,54 @@ namespace lab5
 {
     public class Workshop
     {
-        public event EventHandler ClientAdded;
-        public event EventHandler RoomAdded;
-        public event EventHandler SettlementAdded;
-        public event EventHandler ClientRemoved;
-        public event EventHandler RoomRemoved;
-        public event EventHandler SettlementRemoved;
+        public event EventHandler CraftbanchAdded;
+        public event EventHandler NameRepairAdded;
+        public event EventHandler RepairAdded;
+        public event EventHandler CraftbanchRemoved;
+        public event EventHandler NameRepairRemoved;
+        public event EventHandler RepairRemoved;
 
 
         /// <summary>
         /// Словарь станков
         /// </summary>
-        private Dictionary<int, Craftbanch> _clients = new Dictionary<int, Craftbanch>();
+        private Dictionary<int, Craftbanch> _craftbanchs = new Dictionary<int, Craftbanch>();
 
         /// <summary>
         /// Словарь видов ремонта
         /// </summary>
-        private Dictionary<int, NameRepair> _rooms = new Dictionary<int, NameRepair>();
+        private Dictionary<int, NameRepair> _nameRepairs = new Dictionary<int, NameRepair>();
 
         /// <summary>
         /// Список ремонтов
         /// </summary>
-        private List<Repair> _settlements = new List<Repair> ();
+        private List<Repair> _repairs = new List<Repair> ();
 
         /// <summary>
         /// Коллекция клиентов
         /// </summary>
-        public IEnumerable<Craftbanch> Clients
+        public IEnumerable<Craftbanch> Craftbanchs
         {
-            get { return _clients.Values.AsEnumerable(); }
+            get { return _craftbanchs.Values.AsEnumerable(); }
         }
         /// <summary>
         /// Коллекция номеров
         /// </summary>
-        public IEnumerable<NameRepair> Rooms
+        public IEnumerable<NameRepair> NameRepairs
         {
             get
             {
-                return _rooms.Values.AsEnumerable();
+                return _nameRepairs.Values.AsEnumerable();
             }
         }
         /// <summary>
         /// Коллекция поселений
         /// </summary>
-        public IEnumerable<Repair> Settlements
+        public IEnumerable<Repair> Repairs
         {
             get
             {
-                return _settlements;
+                return _repairs;
             }
         }
 
@@ -92,17 +92,17 @@ namespace lab5
         {
             if (client.Mark == "" || client.State== "")
             {
-                throw new InvalidCraftbanchException("Информация о клиент заполнена некорректно");
+                throw new InvalidCraftbanchException("Информация о станке заполнена некорректно");
             }
             try
             {
-                _clients.Add(client.CraftbanchId, client);
+                _craftbanchs.Add(client.CraftbanchId, client);
                 //Герерируем событие о том, что клиент добавлен
-                ClientAdded?.Invoke(client, EventArgs.Empty);
+                CraftbanchAdded?.Invoke(client, EventArgs.Empty);
             }
             catch (System.Exception exception)
             {
-                throw new InvalidCraftbanchException("При добавлении клиента произошла ошибка", exception);
+                throw new InvalidCraftbanchException("При добавлении станка произошла ошибка", exception);
             }
         }
         /// <summary>
@@ -113,17 +113,17 @@ namespace lab5
         {
             if (room.Duration==0)
             {
-                throw new InvalidNameRepairException("Информация о номере заполнена некорректно");
+                throw new InvalidNameRepairException("Информация о вида работы заполнена некорректно");
             }
             try
             {
-                _rooms.Add(room.NameRepairId, room);
+                _nameRepairs.Add(room.NameRepairId, room);
                 //Герерируем событие о том, что номер добавлен
-                RoomAdded?.Invoke(room, EventArgs.Empty);
+                NameRepairAdded?.Invoke(room, EventArgs.Empty);
             }
             catch (System.Exception exception)
             {
-                throw new InvalidNameRepairException("При добавлении номера произошла ошибка", exception);
+                throw new InvalidNameRepairException("При добавлении вида работы произошла ошибка", exception);
             }
         }
         /// <summary>
@@ -134,17 +134,17 @@ namespace lab5
         {
             if (settlement.NameStanok.Mark == "" || settlement.NameRepair.Duration == 0)
             {
-                throw new InvalidRepairException("Информация о заселении заполнена некорректно");
+                throw new InvalidRepairException("Информация о мастерской заполнена некорректно");
             }
             try
             {
-                _settlements.Add(settlement);
+                _repairs.Add(settlement);
                 //Герерируем событие о том, что информация о поселении добавлена
-                SettlementAdded?.Invoke(settlement, EventArgs.Empty);
+                RepairAdded?.Invoke(settlement, EventArgs.Empty);
             }
             catch (System.Exception exception)
             {
-                throw new InvalidRepairException("При поселении произошла ошибка", exception);
+                throw new InvalidRepairException("В мастерской произошла ошибка", exception);
             }
         }
         /// <summary>
@@ -153,11 +153,11 @@ namespace lab5
         /// <param name="clientKey">Идентификатор клиента</param>
         public void RemoveClient(int clientKey)
         {
-            _clients.Remove(clientKey);
+            _craftbanchs.Remove(clientKey);
             //Генерируем событие о том, что клиент удалён
-            ClientRemoved?.Invoke(clientKey, EventArgs.Empty);
+            CraftbanchRemoved?.Invoke(clientKey, EventArgs.Empty);
             //Получаем список сведений о поселении клиента
-            var settlementsForClient = Settlements.Where(s => s.NameStanok.CraftbanchId == clientKey).ToList();
+            var settlementsForClient = Repairs.Where(s => s.NameStanok.CraftbanchId == clientKey).ToList();
             
             for (int i = 0; i < settlementsForClient.Count; i++)
             {
@@ -172,11 +172,11 @@ namespace lab5
         /// <param name="roomKey"></param>
         public void RemoveRoom(int roomKey)
         {
-            _rooms.Remove(roomKey);
+            _nameRepairs.Remove(roomKey);
             //Генерируем событие о том, что номер удалён
-            RoomRemoved?.Invoke(roomKey, EventArgs.Empty);
+            NameRepairRemoved?.Invoke(roomKey, EventArgs.Empty);
             //Получаем список сведений о поселении в номер
-            var settlementsForRoom = Settlements.Where(s => s.NameRepair.NameRepairId == roomKey).ToList();
+            var settlementsForRoom = Repairs.Where(s => s.NameRepair.NameRepairId == roomKey).ToList();
             for (int i = 0; i < settlementsForRoom.Count; i++)
             {
                 //Удаляем сведения о поселении в номер
@@ -189,9 +189,9 @@ namespace lab5
         /// <param name="settlement">Информация о поселении</param>
         public void RemoveSettlement(Repair settlement)
         {
-            _settlements.Remove(settlement);
+            _repairs.Remove(settlement);
             //Генерируем событие о том, что информация о поселении удалена
-            SettlementRemoved?.Invoke(settlement, EventArgs.Empty);
+            RepairRemoved?.Invoke(settlement, EventArgs.Empty);
         }
 
     }

@@ -33,15 +33,15 @@ namespace WindowsFormsApp_FOR_LABS
         public FormWorkshop()
         {
             InitializeComponent();
-            _hotel.ClientAdded += _hotel_ClientAdded;
-            _hotel.ClientRemoved += _hotel_ClientRemoved;
-            _hotel.RoomAdded += _hotel_RoomAdded;
-            _hotel.RoomRemoved += _hotel_RoomRemoved;
-            foreach (var client in _hotel.Clients)
+            _hotel.CraftbanchAdded += _hotel_ClientAdded;
+            _hotel.CraftbanchRemoved += _hotel_ClientRemoved;
+            _hotel.NameRepairAdded += _hotel_RoomAdded;
+            _hotel.NameRepairRemoved += _hotel_RoomRemoved;
+            foreach (var client in _hotel.Craftbanchs)
             {
                 comboBox1.Items.Add(client);
             }
-            foreach (var room in _hotel.Rooms)
+            foreach (var room in _hotel.NameRepairs)
             {
                 comboBox2.Items.Add(room);
             }   
