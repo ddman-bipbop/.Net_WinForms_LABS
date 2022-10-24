@@ -13,19 +13,42 @@ namespace WindowsFormsApp_FOR_LABS
 {
     public partial class FormRepair : Form
     {
-        public NameRepair NameRepair { get; }
-        public FormRepair(NameRepair nameRepair)
+        private NameRepair _room;
+        public NameRepair Room
         {
+            get
+            {
+                return _room;
+            }
+            set
+            {
+                _room = value;
+
+                comboBox1.SelectedItem = _room.Name;
+
+                numericUpDown1.Value = _room.Duration;
+                numericUpDown2.Value = (decimal)_room.Price;
+                textBox4.Text = _room.Commet;
+            }
+        }
+  
+
+        public FormRepair()
+        {        
             InitializeComponent();
-            NameRepair = nameRepair;
             comboBox1.Items.Add(CategoryNameRepair.Current);
             comboBox1.Items.Add(CategoryNameRepair.Midle);
-            comboBox1.Items.Add(CategoryNameRepair.Capital);     
-            comboBox1.SelectedItem = NameRepair.Name;
+            comboBox1.Items.Add(CategoryNameRepair.Capital);
 
-            numericUpDown1.Value = NameRepair.Duration;
-            numericUpDown2.Value = (decimal)NameRepair.Price;
-            textBox4.Text = NameRepair.Commet;
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _room.Name = (CategoryNameRepair)comboBox1.SelectedItem;
+            _room.Duration = ((int)numericUpDown1.Value);
+            _room.Price = (double)numericUpDown2.Value;
+            _room.Commet = textBox4.Text;
         }
 
         private void FormRepair_Load(object sender, EventArgs e)
@@ -37,13 +60,7 @@ namespace WindowsFormsApp_FOR_LABS
         {
 
         }    
-        private void button1_Click(object sender, EventArgs e)
-        {
-            NameRepair.Name = (CategoryNameRepair)comboBox1.SelectedItem;
-            NameRepair.Duration = ((int)numericUpDown1.Value);
-            NameRepair.Price = (double)numericUpDown2.Value;
-            NameRepair.Commet = textBox4.Text;
-        }
+        
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {

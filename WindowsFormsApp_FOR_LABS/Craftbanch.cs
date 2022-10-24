@@ -24,11 +24,11 @@ namespace lab5
         /// <summary>
         /// Уникальный идентификатор клиента
         /// </summary>
-        public int CraftbanchirId { get; }
+        public int CraftbanchId { get; }
 
         public Craftbanch() 
         {
-            CraftbanchirId = NewCraftbanchId;
+            CraftbanchId = NewCraftbanchId;
         }
         /// <summary>
         /// Страна

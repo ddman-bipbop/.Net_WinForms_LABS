@@ -7,31 +7,89 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp_FOR_LABS;
 using lab5;
 
 namespace WindowsFormsApp_FOR_LABS
 {
     public partial class FormWorkshop : Form
     {
-        public Repair Repair { get; }
-        public FormWorkshop(Repair repair)
+        private Repair _settlement;
+        public Repair Settlement
+        {
+            get { return _settlement; }
+            set
+            {
+                _settlement = value;
+                comboBox1.SelectedItem = _settlement.NameStanok;
+                comboBox2.SelectedItem = _settlement.NameRepair;
+                dateTimePicker1.Value = _settlement.DateStart;
+            }
+        }
+        private readonly Workshop _hotel = Workshop.Instance;
+
+   
+
+        public FormWorkshop()
         {
             InitializeComponent();
-            Repair = repair;
-            foreach (var item in Workshop.DCraftbanch)
+            _hotel.ClientAdded += _hotel_ClientAdded;
+            _hotel.ClientRemoved += _hotel_ClientRemoved;
+            _hotel.RoomAdded += _hotel_RoomAdded;
+            _hotel.RoomRemoved += _hotel_RoomRemoved;
+            foreach (var client in _hotel.Clients)
             {
-                var stanok = item.Value;
-                comboBox1.Items.Add(stanok);
+                comboBox1.Items.Add(client);
             }
-            foreach (var item in Workshop.DNameRepair)
+            foreach (var room in _hotel.Rooms)
             {
-                var room = item.Value;
                 comboBox2.Items.Add(room);
-            }
-            comboBox1.SelectedItem = Repair.NameStanok;
-            comboBox2.SelectedItem = Repair.NameRepair;
-            dateTimePicker1.Value = Repair.DateStart;
+            }   
 
+        }
+        private void _hotel_ClientRemoved(object sender, EventArgs e)
+        {
+            int key = (int)sender;
+            for (int i = 0; i < comboBox1.Items.Count; i++)
+            {
+                var client = comboBox1.Items[i] as Craftbanch;
+                if (client?.CraftbanchId == key)
+                {
+                    comboBox1.Items.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+
+        private void _hotel_ClientAdded(object sender, EventArgs e)
+        {
+            comboBox1.Items.Add(sender);
+        }
+
+        private void _hotel_RoomRemoved(object sender, EventArgs e)
+        {
+            int key = (int)sender;
+            for (int i = 0; i < comboBox2.Items.Count; i++)
+            {
+                var room = comboBox2.Items[i] as NameRepair;
+                if (room?.NameRepairId == key)
+                {
+                    comboBox2.Items.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+
+        private void _hotel_RoomAdded(object sender, EventArgs e)
+        {
+            comboBox2.Items.Add(sender);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _settlement.NameStanok = comboBox1.SelectedItem as Craftbanch;
+            _settlement.NameRepair = comboBox2.SelectedItem as NameRepair;
+            _settlement.DateStart = dateTimePicker1.Value;
         }
 
         private void FormWorkshop_Load(object sender, EventArgs e)
@@ -54,11 +112,6 @@ namespace WindowsFormsApp_FOR_LABS
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Repair.NameStanok = comboBox1.SelectedItem as Craftbanch;
-            Repair.NameRepair = comboBox2.SelectedItem as NameRepair;
-            Repair.DateStart = dateTimePicker1.Value;
-        }
+       
     }
 }

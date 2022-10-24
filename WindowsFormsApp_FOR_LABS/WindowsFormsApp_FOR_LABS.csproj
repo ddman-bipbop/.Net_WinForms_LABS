@@ -47,6 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryNameRepair.cs" />
+    <Compile Include="ExceptionNameRepair.cs" />
+    <Compile Include="ExceptionRepair.cs" />
+    <Compile Include="ExeptionCraftbanch.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
