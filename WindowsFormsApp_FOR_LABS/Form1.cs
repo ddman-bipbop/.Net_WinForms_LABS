@@ -348,5 +348,10 @@ namespace WindowsFormsApp_FOR_LABS
             }
 
         }
+
+        private void stanokToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
