@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using lab5;
 
 namespace WindowsFormsApp_FOR_LABS
 {
@@ -35,14 +27,15 @@ namespace WindowsFormsApp_FOR_LABS
         private void _workshop_RepairRemoved(object sender, EventArgs e)
         {
             var settlement = sender as Repair;
-            for (int i = 0; i < listView1.Items.Count; i++)
+            for (int i = 0; i < tabPage1.Controls.Count; i++)
             {
-                if ((Repair)listView1.Items[i].Tag == settlement)
+                if ((tabPage1.Controls[i] as UserControl1)?.Settlement == settlement)
                 {
-                    listView1.Items.RemoveAt(i);
+                    tabPage1.Controls.RemoveAt(i);
                     break;
                 }
             }
+
         }
 
         private void _workshop_NameRepairRemoved(object sender, EventArgs e)
@@ -76,13 +69,12 @@ namespace WindowsFormsApp_FOR_LABS
             var settlement = sender as Repair;
             if (settlement != null)
             {
-                var listViewItem = new ListViewItem
+                UserControl1 userControl = new UserControl1(settlement)
                 {
-                    Tag = settlement,
-                    Text = settlement.ToString()
-                };              
-                listView1.Items.Add(listViewItem);
+                    Dock = DockStyle.Top
+                }; tabPage1.Controls.Add(userControl);
             }
+
         }
 
         private void _workshop_NameRepairAdded(object sender, EventArgs e)
@@ -207,19 +199,29 @@ namespace WindowsFormsApp_FOR_LABS
         {
             try
             {
-                var settlement = listView1.SelectedItems[0].Tag as Repair;
-                _formWorkshop.Settlement = settlement;
-                if (_formWorkshop.ShowDialog() == DialogResult.OK)
+                for (int i = 0; i < tabPage1.Controls.Count; i++)
                 {
-                    settlement = _formWorkshop.Settlement;
-                    var listViewItem = listView1.SelectedItems[0];
-                    listViewItem.Text = settlement.ToString();                   
+                    var userControl = tabPage1.Controls[i] as UserControl1;
+                    if (userControl != null)
+                    {
+                        if (userControl.Selected)
+                        {
+                            var settlement = userControl.Settlement;
+                            _formRepair.Room = settlement.NameRepair;
+                            if (_formRepair.ShowDialog() == DialogResult.OK)
+                            {
+                                userControl.Refresh();
+                            }
+                            break;
+                        }
+                    }
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("Не выбрана строка в мастерской");
+                MessageBox.Show("Не выбрана запись о поселении");
             }
+
 
 
         }
@@ -350,6 +352,11 @@ namespace WindowsFormsApp_FOR_LABS
         }
 
         private void stanokToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
         {
 
         }

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp_FOR_LABS", "WindowsFormsApp_FOR_LABS\WindowsFormsApp_FOR_LABS.csproj", "{108FFFD6-BDAA-4DC3-A48D-1B920703A548}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsControlLibraryCraftbanch", "WindowsFormsControlLibraryCraftbanch\WindowsFormsControlLibraryCraftbanch.csproj", "{675DA9A3-C4D3-4319-8A00-198BE5B46638}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{108FFFD6-BDAA-4DC3-A48D-1B920703A548}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{108FFFD6-BDAA-4DC3-A48D-1B920703A548}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{108FFFD6-BDAA-4DC3-A48D-1B920703A548}.Release|Any CPU.Build.0 = Release|Any CPU
+		{675DA9A3-C4D3-4319-8A00-198BE5B46638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{675DA9A3-C4D3-4319-8A00-198BE5B46638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{675DA9A3-C4D3-4319-8A00-198BE5B46638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{675DA9A3-C4D3-4319-8A00-198BE5B46638}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

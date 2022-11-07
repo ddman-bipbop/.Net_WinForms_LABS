@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lab5
+namespace WindowsFormsApp_FOR_LABS
 {
     internal interface IValidatable
     {

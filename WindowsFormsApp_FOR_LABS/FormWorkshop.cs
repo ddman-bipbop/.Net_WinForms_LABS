@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp_FOR_LABS;
-using lab5;
 
 namespace WindowsFormsApp_FOR_LABS
 {
