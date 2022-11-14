@@ -12,7 +12,9 @@ namespace WindowsFormsApp_FOR_LABS
 {
     public partial class FormRepair : Form
     {
+
         private NameRepair _room;
+
         public NameRepair Room
         {
             get

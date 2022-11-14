@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.IO;
+using System.Xml.Serialization;
+
 
 namespace WindowsFormsApp_FOR_LABS
 {
@@ -207,7 +210,7 @@ namespace WindowsFormsApp_FOR_LABS
                         if (userControl.Selected)
                         {
                             var settlement = userControl.Settlement;
-                            _formRepair.Room = settlement.NameRepair;
+                            _formWorkshop.Settlement = settlement;
                             if (_formRepair.ShowDialog() == DialogResult.OK)
                             {
                                 userControl.Refresh();
@@ -331,25 +334,6 @@ namespace WindowsFormsApp_FOR_LABS
 
         }
 
-        private void listView1_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Delete)
-            {
-                try
-                {
-                    var settlement = listView1.SelectedItems[0].Tag as Repair;
-                    if (settlement != null)
-                    {
-                        _workshop.RemoveSettlement(settlement);
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Не выбрана строка в мастерской");
-                }
-            }
-
-        }
 
         private void stanokToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -358,6 +342,18 @@ namespace WindowsFormsApp_FOR_LABS
 
         private void tabPage1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            XmlSerializer formatter = new XmlSerializer(typeof(Repair));
+            
+            // получаем поток, куда будем записывать сериализованный объект
+            using (FileStream fs = new FileStream("Repairs.xml", FileMode.OpenOrCreate))
+            {
+                formatter.Serialize(fs, _formWorkshop.Settlement);            
+            }
 
         }
     }

@@ -51,10 +51,10 @@ namespace WindowsFormsApp_FOR_LABS
 
         private void UserControl1_Paint(object sender, PaintEventArgs e)
         {
-            textBox1.Text = $@"{Settlement.NameStanok}.";
+            textBox1.Text = Settlement.NameStanok.ToString();
             textBox2.Text = Settlement.NameRepair.Name.ToString();
 
-            dateTimePicker1.Text = $@" {Settlement.DateStart}";
+            dateTimePicker1.Text = Settlement.DateStart.ToString();
 
             BackColor = _selected ? Color.CornflowerBlue : DefaultBackColor;
 
@@ -66,7 +66,11 @@ namespace WindowsFormsApp_FOR_LABS
 
         private void UserControl1_Load(object sender, EventArgs e)
         {
+            textBox1.Text = Settlement.NameStanok.Mark;
+            textBox2.Text = Settlement.NameRepair.Name.ToString();
 
+            dateTimePicker1.Text = Settlement.DateStart.ToString();
+            BackColor = _selected ? Color.CornflowerBlue : DefaultBackColor;
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -89,6 +93,21 @@ namespace WindowsFormsApp_FOR_LABS
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void UserControl1_MouseClick(object sender, MouseEventArgs e)
+        {
+            Selected = true;
+        }
+
+        private void UserControl1_Click_1(object sender, EventArgs e)
+        {
+            Selected = true;
+        }
+
+        private void UserControl1_Paint_1(object sender, PaintEventArgs e)
+        {
+            BackColor = _selected ? Color.CornflowerBlue : DefaultBackColor;
         }
     }
 }
