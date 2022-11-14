@@ -2,10 +2,13 @@
 using System.Windows.Forms;
 using System.IO;
 using System.Xml.Serialization;
-
+using Newtonsoft.Json;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.ComponentModel;
 
 namespace WindowsFormsApp_FOR_LABS
 {
+    [Serializable]
     public partial class Form1 : Form
     {
 
@@ -352,8 +355,89 @@ namespace WindowsFormsApp_FOR_LABS
             // получаем поток, куда будем записывать сериализованный объект
             using (FileStream fs = new FileStream("Repairs.xml", FileMode.OpenOrCreate))
             {
-                formatter.Serialize(fs, _formWorkshop.Settlement);            
+                
+                for (int i = 0; i < tabPage1.Controls.Count; i++)
+                {
+                    var userControl = tabPage1.Controls[i] as UserControl1;
+                    if (userControl != null)
+                    {
+                        
+                        var settlement = userControl.Settlement;
+
+                        formatter.Serialize(fs, settlement);                      
+                        
+                    }
+                }
             }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            XmlSerializer formatter = new XmlSerializer(typeof(Repair));
+            // десериализация
+            using (FileStream fs = new FileStream("Repairs.xml", FileMode.OpenOrCreate))
+            {
+                // не работает если массив элементов, ТОЛЬКО С ОДНИМ!!!!
+                Repair newPerson = (Repair)formatter.Deserialize(fs);
+                _workshop.AddSettlement(newPerson);
+            }
+
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using (StreamWriter jsonStreamWriter = File.CreateText("JSON_Repairs.json"))
+            {
+                
+                
+                for (int i = 0; i < tabPage1.Controls.Count; i++)
+                {
+                    var userControl = tabPage1.Controls[i] as UserControl1;
+                    if (userControl != null)
+                    {
+
+                        var settlement = userControl.Settlement;
+                        JsonSerializer jsonSerializer = new JsonSerializer { Formatting = Formatting.Indented };
+                        jsonSerializer.Serialize(jsonStreamWriter, settlement);
+
+                    }
+                }
+            }
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            StreamReader jsonStreamReader = File.OpenText("JSON_Repairs.json");
+            JsonSerializer jsonSerializer = new JsonSerializer();
+            Repair newPerson = (Repair)jsonSerializer.Deserialize(jsonStreamReader, typeof(Repair));
+            _workshop.AddSettlement(newPerson);
+        }
+
+        
+        private void button5_Click(object sender, EventArgs e)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            using (FileStream binaryFileStream = new FileStream("BIN_Repairs.bin", FileMode.OpenOrCreate))
+            {
+
+                formatter.Serialize(binaryFileStream, tabPage1.Controls[0]);
+
+
+            }
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream binaryFileStream = new FileStream("BIN_Repairs.bin", FileMode.Open);
+
+            Repair newPerson = (Repair)formatter.Deserialize(binaryFileStream);
+            _workshop.AddSettlement(newPerson);
 
         }
     }
