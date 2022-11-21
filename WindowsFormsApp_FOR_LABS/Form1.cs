@@ -12,6 +12,7 @@ namespace WindowsFormsApp_FOR_LABS
     [Serializable]
     public partial class Form1 : Form
     {
+        readonly FormError _formError = new FormError();
         public Form1()
         {
             InitializeComponent();
@@ -34,6 +35,7 @@ namespace WindowsFormsApp_FOR_LABS
             comboBox2.Items.Add(utf32);
 
             textBox3.Text = "Lab9.txt";
+            textBox4.Text = "Lab9.txt";
         }
 
 
@@ -53,58 +55,47 @@ namespace WindowsFormsApp_FOR_LABS
                      utf32   = Encoding.UTF32;
 
             byte[] readStringBytes, writeStringBytes = { };
-            using (StreamWriter writer = new StreamWriter("Lab9.txt", false))
+
+            string text = textBox1.Text;
+            Encoding temp = (System.Text.Encoding)comboBox2.SelectedItem;
+            char[] chTemp = { };
+            switch (comboBox1.SelectedItem.ToString())
             {
-                string text = textBox1.Text;
-                Encoding temp = (System.Text.Encoding)comboBox2.SelectedItem;
-                char[] chTemp = { };
-                switch (comboBox1.SelectedItem.ToString())
-                {
-                    case "ASCII":
-                        readStringBytes = ascii.GetBytes(text);
-                        writeStringBytes = Encoding.Convert(ascii, temp, readStringBytes);
-                        chTemp = new char[temp.GetCharCount(writeStringBytes, 0, writeStringBytes.Length)];
+                case "ASCII":
+                    readStringBytes = ascii.GetBytes(text);
+                    writeStringBytes = Encoding.Convert(ascii, temp, readStringBytes);             
 
-                        break;
-                    case "Unicode":
-                        readStringBytes = unicode.GetBytes(text);
-                        writeStringBytes = Encoding.Convert(unicode, temp, readStringBytes);
-                        chTemp = new char[temp.GetCharCount(writeStringBytes, 0, writeStringBytes.Length)];
-                        break;
-                    case "UTF8":
-                        readStringBytes = utf8.GetBytes(text);
-                        writeStringBytes = Encoding.Convert(utf8, temp, readStringBytes);
-                        chTemp = new char[temp.GetCharCount(writeStringBytes, 0, writeStringBytes.Length)];
-                        break;
-                    case "UTF7":
-                        readStringBytes = utf7.GetBytes(text);
-                        writeStringBytes = Encoding.Convert(utf7, temp, readStringBytes);
-                        chTemp = new char[temp.GetCharCount(writeStringBytes, 0, writeStringBytes.Length)];
-                        break;
-                    case "UTF32":
-                        readStringBytes = utf32.GetBytes(text);
-                        writeStringBytes = Encoding.Convert(utf32, temp, readStringBytes);
-                        chTemp = new char[temp.GetCharCount(writeStringBytes, 0, writeStringBytes.Length)];
-                        break;
-                }
-                temp.GetChars(writeStringBytes, 0, writeStringBytes.Length, chTemp, 0);
-                string finalString = new string(chTemp);
+                    break;
+                case "Unicode":
+                    readStringBytes = unicode.GetBytes(text);
+                    writeStringBytes = Encoding.Convert(unicode, temp, readStringBytes);
+                    
+                    break;
+                case "UTF8":
+                    readStringBytes = utf8.GetBytes(text);
+                    writeStringBytes = Encoding.Convert(utf8, temp, readStringBytes);
+                    
+                    break;
+                case "UTF7":
+                    readStringBytes = utf7.GetBytes(text);
+                    writeStringBytes = Encoding.Convert(utf7, temp, readStringBytes);
+                    
+                    break;
+                case "UTF32":
+                    readStringBytes = utf32.GetBytes(text);
+                    writeStringBytes = Encoding.Convert(utf32, temp, readStringBytes);
+                    
+                    break;
+            }
+            chTemp = new char[temp.GetCharCount(writeStringBytes, 0, writeStringBytes.Length)];
+            temp.GetChars(writeStringBytes, 0, writeStringBytes.Length, chTemp, 0);
+            string finalString = new string(chTemp);
 
-
-                //writeStringBytes = Encoding.Convert()
-
-                // Перевод строки в массив байт (byte[]).
-
-                //byte[] asciiBytes = Encoding.Convert(unicode, ascii, unicodeBytes);
-
-                // Конвертация массива байт в массив символов и строку.
-                // Пример использования GetCharCount/GetChars.
-                //char[] asciiChars = new char[ascii.GetCharCount(asciiBytes, 0, asciiBytes.Length)];
-                //ascii.GetChars(asciiBytes, 0, asciiBytes.Length, asciiChars, 0);
-                //string asciiString = new string(asciiChars);
-
-
-                //writer.WriteLine(asciiString);
+            string path = textBox4.Text;
+            textBox2.Text = finalString;
+            using (StreamWriter writer = new StreamWriter(new FileStream(path, FileMode.OpenOrCreate), temp))
+            {             
+                writer.WriteLine(finalString);
             }
         }
 
@@ -116,18 +107,44 @@ namespace WindowsFormsApp_FOR_LABS
 
         private async void button2_Click(object sender, EventArgs e)
         {
+            
+            
             if (textBox3.Text != "" && comboBox1.GetItemText(comboBox1.SelectedIndex) != "-1")
             {
-                
+                Encoding temp = Encoding.ASCII;
+                switch (comboBox1.SelectedItem.ToString())
+                {
+                    case "ASCII":
+                        temp = Encoding.ASCII;
+                        break;
+                    case "Unicode":
+                        temp = Encoding.Unicode;
+                        break;
+                    case "UTF8":
+                        temp = Encoding.UTF8;
+                        break;
+                    case "UTF7":
+                        temp = Encoding.UTF7;
+                        break;
+                    case "UTF32":
+                        temp = Encoding.UTF32;
+                        break;
+                }
+
                 string path = textBox3.Text;
                 // асинхронное чтение
-                using (StreamReader reader = new StreamReader(new FileStream(path, FileMode.OpenOrCreate), (System.Text.Encoding)comboBox2.SelectedItem))
+                using (StreamReader reader = new StreamReader(new FileStream(path, FileMode.OpenOrCreate), temp))
                 {
-                    textBox1.Text = await reader.ReadToEndAsync();                 
+                    textBox1.Text = await reader.ReadToEndAsync();
                 }
             }
             else
-                return;
+            {
+                if (_formError.ShowDialog() == DialogResult.OK) 
+                {
+                    return;
+                }
+            }
             
             
         }
@@ -143,6 +160,16 @@ namespace WindowsFormsApp_FOR_LABS
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
