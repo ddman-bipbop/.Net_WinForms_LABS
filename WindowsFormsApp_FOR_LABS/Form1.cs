@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.ComponentModel;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace WindowsFormsApp_FOR_LABS
 {
@@ -170,6 +171,37 @@ namespace WindowsFormsApp_FOR_LABS
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string myText = textBox5.Text;
+
+            const string myReg = "using";
+            MatchCollection myMatch = Regex.Matches(myText, myReg);
+
+            //Console.WriteLine("Все вхождения строки \"{0}\" в исходной строке: ", myReg);
+            foreach (Match i in myMatch) 
+            {
+                textBox6.Text += i.Index + "\t";
+            }
+                
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
         {
 
         }
