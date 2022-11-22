@@ -37,6 +37,7 @@ namespace WindowsFormsApp_FOR_LABS
 
             textBox3.Text = "Lab9.txt";
             textBox4.Text = "Lab9.txt";
+            textBox7.Text = "Lab9.2.txt";
         }
 
 
@@ -165,13 +166,11 @@ namespace WindowsFormsApp_FOR_LABS
 
         }
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
+        private void textBox4_TextChanged(object sender, EventArgs e){
 
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
+        private void textBox2_TextChanged(object sender, EventArgs e){
 
         }
 
@@ -187,21 +186,66 @@ namespace WindowsFormsApp_FOR_LABS
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string myText = textBox5.Text;
-
-            const string myReg = "using";
-            MatchCollection myMatch = Regex.Matches(myText, myReg);
-
-            //Console.WriteLine("Все вхождения строки \"{0}\" в исходной строке: ", myReg);
-            foreach (Match i in myMatch) 
+            string text = "";
+            //Console.Write("Имя файла: ");
+            string fileName = textBox7.Text;
+            while (!File.Exists(fileName))
             {
-                textBox6.Text += i.Index + "\t";
+                if (_formError.ShowDialog() == DialogResult.OK)
+                {
+                    return;
+                }
             }
-                
+            using (StreamReader readrer = new StreamReader(fileName))
+            {
+                text = readrer.ReadToEnd();
+            }
+            textBox5.Text = text;
+            const string myReg1 = @"(get\s+){(\s+[a-zA-Z\s+]+[^\s;]*);+\s+}";
+            MatchCollection match1 = Regex.Matches(text, myReg1, RegexOptions.IgnoreCase);
+            findMyText(text, match1);
+
+        }
+
+        private void findMyText(string text, MatchCollection myMatch)
+        {
+            Console.WriteLine("\n\nИсходная строка:\n\n{0}\n\nВидоизмененная строка:\n", text);
+
+            // Реализуем выделение ключевых слов в консоли другим цветом
+            for (int i = 0; i < text.Length; i++)
+            {
+                foreach (Match m in myMatch)
+                {
+                    if ((i >= m.Index) && (i < m.Index + m.Length))
+                    {
+                        Console.BackgroundColor = ConsoleColor.Green;
+                        Console.ForegroundColor = ConsoleColor.Black;
+                        //textBox6.BackColor = System.Drawing.Color.Aqua;
+                        //textBox6.ForeColor = System.Drawing.Color.Black;
+                        
+
+                        break;
+                    }
+                    else
+                    {
+                        //textBox6.BackColor = System.Drawing.Color.Black;
+                        //textBox6.ForeColor = System.Drawing.Color.White;
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                }
+                Console.Write(text[i]);
+                //textBox6.Text += text[i];
+            }
 
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
         {
 
         }
