@@ -5,6 +5,10 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp_FOR_LABS", "WindowsFormsApp_FOR_LABS\WindowsFormsApp_FOR_LABS.csproj", "{108FFFD6-BDAA-4DC3-A48D-1B920703A548}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab10_Client_C_sharp", "Lab10_Client_C_sharp\Lab10_Client_C_sharp.csproj", "{F0093233-DC7C-48D7-891D-1C6DB1869D8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryAuto", "ClassLibraryAuto\ClassLibraryAuto.csproj", "{32BAB0F6-F2A9-4056-9E11-FB3FA8CB55B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{108FFFD6-BDAA-4DC3-A48D-1B920703A548}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{108FFFD6-BDAA-4DC3-A48D-1B920703A548}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{108FFFD6-BDAA-4DC3-A48D-1B920703A548}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0093233-DC7C-48D7-891D-1C6DB1869D8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0093233-DC7C-48D7-891D-1C6DB1869D8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0093233-DC7C-48D7-891D-1C6DB1869D8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0093233-DC7C-48D7-891D-1C6DB1869D8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32BAB0F6-F2A9-4056-9E11-FB3FA8CB55B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32BAB0F6-F2A9-4056-9E11-FB3FA8CB55B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32BAB0F6-F2A9-4056-9E11-FB3FA8CB55B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32BAB0F6-F2A9-4056-9E11-FB3FA8CB55B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
