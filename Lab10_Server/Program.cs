@@ -11,7 +11,7 @@ namespace Server
 {
     class Program
     {
-        private static ConcurrentDictionary<string, Auto> _cities = new ConcurrentDictionary<string, Auto>();
+        private static ConcurrentDictionary<string, Auto> _autos = new ConcurrentDictionary<string, Auto>();
         static void Main(string[] args)
         {
             // Устанавливаем для сокета локальную конечную точку
@@ -46,7 +46,7 @@ namespace Server
                 Console.ReadLine();
             }
         }
-
+        
         private static void Action(object o)
         {
             Socket socket = o as Socket;
@@ -60,20 +60,20 @@ namespace Server
                         byte[] bytes = new byte[10240];
                         int bytesRec = socket.Receive(bytes);
                         string json = Encoding.UTF8.GetString(bytes, 0, bytesRec);
-                        CityResponse response = new CityResponse { IsSuccess = false };
+                        AutoResponse response = new AutoResponse { IsSuccess = false };
                         try
                         {
-                            var request = JsonConvert.DeserializeObject<CityRequest>(json);
+                            var request = JsonConvert.DeserializeObject<AutoRequest>(json);
                             if (request != null)
                             {
                                 response.Key = request.Key;
-                                City city;
+                                Auto city;
                                 switch (request.Type)
                                 {
-                                    case CityRequestType.Get:
-                                        if (_cities.TryGetValue(request.Key, out city))
+                                    case AutoRequestType.Get:
+                                        if (_autos.TryGetValue(request.Key, out city))
                                         {
-                                            response.City = city;
+                                            response.Auto = city;
                                             response.IsSuccess = true;
                                         }
                                         else
@@ -81,43 +81,43 @@ namespace Server
                                             response.ErrorMessage = "Ключ не найден";
                                         }
                                         break;
-                                    case CityRequestType.Add:
-                                        if (_cities.ContainsKey(request.Key))
+                                    case AutoRequestType.Add:
+                                        if (_autos.ContainsKey(request.Key))
                                         {
-                                            response.ErrorMessage = "Город с таким ключем уже существует";
+                                            response.ErrorMessage = "Машина с таким ключем уже существует";
                                         }
                                         else
                                         {
-                                            _cities.AddOrUpdate(request.Key, request.City, (s, city1) => request.City);
+                                            _autos.AddOrUpdate(request.Key, request.Auto, (s, city1) => request.Auto);
                                             response.IsSuccess = true;
                                         }
                                         break;
-                                    case CityRequestType.Update:
-                                        if (_cities.ContainsKey(request.Key))
+                                    case AutoRequestType.Update:
+                                        if (_autos.ContainsKey(request.Key))
                                         {
-                                            _cities.AddOrUpdate(request.Key, request.City, (s, city1) => request.City);
+                                            _autos.AddOrUpdate(request.Key, request.Auto, (s, city1) => request.Auto);
                                             response.IsSuccess = true;
                                         }
                                         else
                                         {
-                                            response.ErrorMessage = "Город с таким ключем не существует";
+                                            response.ErrorMessage = "Машина с таким ключем не существует";
                                         }
                                         break;
-                                    case CityRequestType.Remove:
-                                        if (_cities.ContainsKey(request.Key))
+                                    case AutoRequestType.Remove:
+                                        if (_autos.ContainsKey(request.Key))
                                         {
-                                            if (_cities.TryRemove(request.Key, out city))
+                                            if (_autos.TryRemove(request.Key, out city))
                                             {
                                                 response.IsSuccess = true;
                                             }
                                             else
                                             {
-                                                response.ErrorMessage = "Не удалось удалить город";
+                                                response.ErrorMessage = "Не удалось удалить Машину";
                                             }
                                         }
                                         else
                                         {
-                                            response.ErrorMessage = "Город с таким ключем не существует";
+                                            response.ErrorMessage = "Машина с таким ключем не существует";
                                         }
                                         break;
                                     default:
@@ -148,3 +148,4 @@ namespace Server
         }
     }
 }
+

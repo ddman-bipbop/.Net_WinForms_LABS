@@ -83,5 +83,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibraryAuto\ClassLibraryAuto.csproj">
+      <Project>{32bab0f6-f2a9-4056-9e11-fb3fa8cb55b3}</Project>
+      <Name>ClassLibraryAuto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lab10_Client_C_sharp\Lab10_Client_C_sharp.csproj">
+      <Project>{f0093233-dc7c-48d7-891d-1c6db1869d8b}</Project>
+      <Name>Lab10_Client_C_sharp</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

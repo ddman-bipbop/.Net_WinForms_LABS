@@ -2,8 +2,9 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-//using ClassLibraryCities;
+using ClassLibraryAuto;
 using Newtonsoft.Json;
+
 
 namespace Client
 {
@@ -27,26 +28,44 @@ namespace Client
             {
                 try
                 {
-                    CityRequest request = null;
-                    Console.Write("Действие (add, get): ");
+                    AutoRequest request = null;
+                    Console.Write("Действие (add, get, update, remove): ");
                     string action = Console.ReadLine();
                     if (action == "add")
                     {
                         string title = Console.ReadLine();
-                        request = new CityRequest
+                        request = new AutoRequest
                         {
-                            City = new City { Title = title },
+                            Auto = new Auto { Name = title },
                             Key = title,
-                            Type = CityRequestType.Add
+                            Type = AutoRequestType.Add
                         };
                     }
                     else if (action == "get")
                     {
                         string key = Console.ReadLine();
-                        request = new CityRequest
+                        request = new AutoRequest
                         {
                             Key = key,
-                            Type = CityRequestType.Get
+                            Type = AutoRequestType.Get
+                        };
+                    }
+                    else if (action == "update")
+                    {
+                        string key = Console.ReadLine();
+                        request = new AutoRequest
+                        {
+                            Key = key,
+                            Type = AutoRequestType.Update
+                        };
+                    }
+                    else if (action == "remove")
+                    {
+                        string key = Console.ReadLine();
+                        request = new AutoRequest
+                        {
+                            Key = key,
+                            Type = AutoRequestType.Remove
                         };
                     }
                     else
