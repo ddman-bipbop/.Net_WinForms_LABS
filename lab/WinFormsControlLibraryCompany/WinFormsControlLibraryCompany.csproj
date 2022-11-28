@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="ClassLibraryEmployees">
+      <HintPath>..\ClassLibraryEmployees\bin\Debug\net6.0\ClassLibraryEmployees.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
