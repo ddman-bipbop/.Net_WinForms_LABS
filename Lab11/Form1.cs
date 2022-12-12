@@ -79,5 +79,10 @@ namespace Lab11
         {
             Kind_sport.Delete(_connection, ((Kind_sport)listView1.SelectedItems[0].Tag).IdKind);
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
