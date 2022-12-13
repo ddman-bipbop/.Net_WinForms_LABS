@@ -82,6 +82,8 @@
             this.columnHeader10,
             this.columnHeader11,
             this.columnHeader12});
+            this.listView2.FullRowSelect = true;
+            this.listView2.GridLines = true;
             this.listView2.Location = new System.Drawing.Point(5, 31);
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(761, 371);
@@ -153,6 +155,7 @@
             this.toolStripButton7.Name = "toolStripButton7";
             this.toolStripButton7.Size = new System.Drawing.Size(65, 22);
             this.toolStripButton7.Text = "Обновить";
+            this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
             // toolStripButton8
             // 
@@ -162,6 +165,7 @@
             this.toolStripButton8.Name = "toolStripButton8";
             this.toolStripButton8.Size = new System.Drawing.Size(55, 22);
             this.toolStripButton8.Text = "Удалить";
+            this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
             // 
             // KindSport
             // 

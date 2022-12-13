@@ -104,14 +104,32 @@ namespace Lab11
 
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
-            FormAddKindSport formUser = new FormAddKindSport
+            FormAddSportClub formUser = new FormAddSportClub
             {
-                KindSport = new Sport_club()
+                SportClub = new Sport_club()
+                
+            };    
+            if (formUser.ShowDialog() == DialogResult.OK)
+            {
+                Sport_club.Insert(_connection, formUser.SportClub);
+            }
+        }
+
+        private void toolStripButton7_Click(object sender, EventArgs e)
+        {
+            FormAddSportClub formUser = new FormAddSportClub
+            {
+                SportClub = (Sport_club)listView2.SelectedItems[0].Tag
             };
             if (formUser.ShowDialog() == DialogResult.OK)
             {
-                Sport_club.Insert(_connection, formUser.KindSport);
+                Sport_club.Update(_connection, formUser.SportClub);
             }
+        }
+
+        private void toolStripButton8_Click(object sender, EventArgs e)
+        {
+            Sport_club.Delete(_connection, ((Sport_club)listView2.SelectedItems[0].Tag).IdClub);
         }
     }
 }

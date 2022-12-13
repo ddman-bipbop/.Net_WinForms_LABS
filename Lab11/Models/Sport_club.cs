@@ -19,7 +19,7 @@ namespace Lab11.Models
         public int IdKind { get; set; }
         public string NameClub { get; set; }
         public string TextClub { get; set; }
-        public DateTime CreateDateClub { get; set; }
+        public DateTime CreateDateClub { get; set; } = DateTime.Now;
 
         public static List<Sport_club> List(SqlConnection connection)
         {
