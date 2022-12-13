@@ -84,5 +84,34 @@ namespace Lab11
         {
 
         }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            var users = Sport_club.List(_connection);
+            listView2.Items.Clear();
+            for (int i = 0; i < users.Count; i++)
+            {
+                var user = users[i];
+                var listListViewItem = listView2.Items.Add(user.IdClub.ToString());
+                listListViewItem.SubItems.Add(user.IdKind.ToString());
+                listListViewItem.Tag = user;
+                
+                listListViewItem.SubItems.Add(user.NameClub);
+                listListViewItem.SubItems.Add(user.TextClub);
+                listListViewItem.SubItems.Add(user.CreateDateClub.ToString());
+            }
+        }
+
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            FormAddKindSport formUser = new FormAddKindSport
+            {
+                KindSport = new Sport_club()
+            };
+            if (formUser.ShowDialog() == DialogResult.OK)
+            {
+                Sport_club.Insert(_connection, formUser.KindSport);
+            }
+        }
     }
 }
