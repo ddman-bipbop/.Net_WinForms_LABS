@@ -89,7 +89,8 @@ namespace Lab11.Models
                     command.CommandText = _updateSportClubCommand;
                     command.CommandType = CommandType.Text;
 
-                    command.Parameters.Add("@id_kind", SqlDbType.Int,32).Value = user.IdKind;
+                    command.Parameters.Add("@id_club", SqlDbType.Int).Value = user.IdClub;
+                    command.Parameters.Add("@id_kind", SqlDbType.Int).Value = user.IdKind;
                     command.Parameters.Add("@Name_club", SqlDbType.NVarChar, 32).Value = user.NameClub;
                     command.Parameters.Add("@Text_club", SqlDbType.NVarChar, 32).Value = user.TextClub;
                     command.Parameters.Add("@CreateDate_club", SqlDbType.NVarChar, 32).Value = user.CreateDateClub;
