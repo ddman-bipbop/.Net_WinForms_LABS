@@ -7,13 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using ClassLibraryAuto2;
 using Newtonsoft.Json;
-
+using System.IO;
+using System.Collections.Concurrent;
+using ClassLibraryAuto;
 
 namespace Lab_10_client_form
 {
@@ -25,6 +24,7 @@ namespace Lab_10_client_form
 
         Socket sender2 = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
+        private static ConcurrentDictionary<string, Auto> _autos = new ConcurrentDictionary<string, Auto>();
         public Form1()
         {
             InitializeComponent();
@@ -53,7 +53,10 @@ namespace Lab_10_client_form
 
                 request = new AutoRequest
                 {
-                    Auto = new Auto { Name = title },
+                    Auto = new Auto 
+                    {
+                        Name = title
+                    },
                     Key = title,
                     Type = AutoRequestType.Add
                 };
@@ -108,13 +111,10 @@ namespace Lab_10_client_form
             // Получаем ответ от сервера
             int bytesRec = sender2.Receive(bytes);
             string jsonRecieve = Encoding.UTF8.GetString(bytes, 0, bytesRec);
+   
+            var auto =  JsonConvert.DeserializeObject<AutoRequest>(jsonRecieve);
+                
 
-            
-            JsonSerializer jsonSerializer = new JsonSerializer();
-            Auto newPerson = (Auto)jsonSerializer.Deserialize(jsonRecieve, typeof(Auto));
-            //Auto temp = JsonConvert.DeserializeObject(jsonRecieve);
-
-            //textBox2.Text = autoRecieve.Name;
         }
     }
 }

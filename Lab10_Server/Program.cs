@@ -11,7 +11,7 @@ namespace Server
 {
     class Program
     {
-        private static ConcurrentDictionary<string, Auto> _autos = new ConcurrentDictionary<string, Auto>();
+        private static ConcurrentDictionary<int, Auto> _autos = new ConcurrentDictionary<int, Auto>();
         static void Main(string[] args)
         {
             // Устанавливаем для сокета локальную конечную точку
@@ -78,24 +78,24 @@ namespace Server
                                         }
                                         else
                                         {
-                                            response.ErrorMessage = "Ключ не найден";
+                                            response.ErrorMessage = "Номер не найден";
                                         }
                                         break;
                                     case AutoRequestType.Add:
                                         if (_autos.ContainsKey(request.Key))
                                         {
-                                            response.ErrorMessage = "Машина с таким ключем уже существует";
+                                            response.ErrorMessage = "Машина с таким номером уже существует";
                                         }
                                         else
                                         {
-                                            _autos.AddOrUpdate(request.Key, request.Auto, (s, city1) => request.Auto);
+                                            _autos.AddOrUpdate(request.Key, request.Auto, (s, city) => request.Auto);
                                             response.IsSuccess = true;
                                         }
                                         break;
                                     case AutoRequestType.Update:
                                         if (_autos.ContainsKey(request.Key))
                                         {
-                                            _autos.AddOrUpdate(request.Key, request.Auto, (s, city1) => request.Auto);
+                                            _autos.AddOrUpdate(request.Key, request.Auto, (s, city) => request.Auto);
                                             response.IsSuccess = true;
                                         }
                                         else

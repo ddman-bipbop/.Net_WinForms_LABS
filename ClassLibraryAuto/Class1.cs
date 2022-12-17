@@ -1,9 +1,22 @@
 ﻿namespace ClassLibraryAuto
 {
-
-    public class Auto 
+    [Serializable]
+    public class Auto
     {
-        public string Name { get; set; } = "Mark 2";
+     
+        /// <summary>
+        /// Марка машины
+        /// </summary>
+        public string Brand { get; set; }
+        /// <summary>
+        /// Цвет машины
+        /// </summary>
+        public string Color {get; set; }
+        /// <summary>
+        /// Дата создания машины
+        /// </summary>
+        public DateTime DateCreate { get; set; }
+
     }
     public enum AutoRequestType
     {
@@ -16,20 +29,20 @@
     {
         public Auto Auto { get; set; }
 
-        public string? Key { get; set; }
+        public int Key { get; set; }
 
         public AutoRequestType Type { get; set; }
 
     }
 
-    public class AutoResponse 
+    public class AutoResponse
     {
-        public Auto? Auto { get; set; }
+        public Auto Auto { get; set; }
 
         public bool IsSuccess { get; set; }
 
-        public string? ErrorMessage { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public string? Key { get; set; }
+        public int Key { get; set; }
     }
 }
