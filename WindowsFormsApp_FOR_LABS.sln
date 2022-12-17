@@ -7,7 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab10_Client_C_sharp", "Lab
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibraryAuto", "ClassLibraryAuto\ClassLibraryAuto.csproj", "{32BAB0F6-F2A9-4056-9E11-FB3FA8CB55B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab10_Server", "Lab10_Server\Lab10_Server.csproj", "{5E761238-3D90-4992-89EB-1809BDF25106}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab10_Server", "Lab10_Server\Lab10_Server.csproj", "{5E761238-3D90-4992-89EB-1809BDF25106}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab_10_client_form", "Lab_10_client_form\Lab_10_client_form.csproj", "{50E82023-E649-4D62-AB81-AADFA00FEED0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0542828C-6354-4CE6-B05D-EBFDC94D180C}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +34,10 @@ Global
 		{5E761238-3D90-4992-89EB-1809BDF25106}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E761238-3D90-4992-89EB-1809BDF25106}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E761238-3D90-4992-89EB-1809BDF25106}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50E82023-E649-4D62-AB81-AADFA00FEED0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50E82023-E649-4D62-AB81-AADFA00FEED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50E82023-E649-4D62-AB81-AADFA00FEED0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50E82023-E649-4D62-AB81-AADFA00FEED0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
