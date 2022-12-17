@@ -109,8 +109,11 @@ namespace Lab_10_client_form
             int bytesRec = sender2.Receive(bytes);
             string jsonRecieve = Encoding.UTF8.GetString(bytes, 0, bytesRec);
 
-            //Auto temp = JsonConvert.DeserializeObject(jsonRecieve);
             
+            JsonSerializer jsonSerializer = new JsonSerializer();
+            Auto newPerson = (Auto)jsonSerializer.Deserialize(jsonRecieve, typeof(Auto));
+            //Auto temp = JsonConvert.DeserializeObject(jsonRecieve);
+
             //textBox2.Text = autoRecieve.Name;
         }
     }
