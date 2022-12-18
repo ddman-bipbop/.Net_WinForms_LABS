@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище DotNetModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Kind_sport">
+          <Key>
+            <PropertyRef Name="id_kind" />
+          </Key>
+          <Property Name="id_kind" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_kind" Type="nvarchar(max)" />
+          <Property Name="Group_kind" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Sport_club">
+          <Key>
+            <PropertyRef Name="id_club" />
+          </Key>
+          <Property Name="id_club" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_kind" Type="int" />
+          <Property Name="Name_club" Type="nvarchar(max)" />
+          <Property Name="Text_club" Type="nvarchar(max)" />
+          <Property Name="CreateDate_club" Type="datetime" />
+          <Property Name="Image_club" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Sport_club_Kind_sport">
+          <End Role="Kind_sport" Type="Self.Kind_sport" Multiplicity="0..1" />
+          <End Role="Sport_club" Type="Self.Sport_club" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kind_sport">
+              <PropertyRef Name="id_kind" />
+            </Principal>
+            <Dependent Role="Sport_club">
+              <PropertyRef Name="id_kind" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище DotNetModelContainer">
+          <EntitySet Name="Kind_sport" EntityType="Self.Kind_sport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sport_club" EntityType="Self.Sport_club" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Sport_club_Kind_sport" Association="Self.FK_Sport_club_Kind_sport">
+            <End Role="Kind_sport" EntitySet="Kind_sport" />
+            <End Role="Sport_club" EntitySet="Sport_club" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DotNetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Kind_sport">
+          <Key>
+            <PropertyRef Name="id_kind" />
+          </Key>
+          <Property Name="id_kind" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_kind" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Group_kind" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Sport_club" Relationship="Self.FK_Sport_club_Kind_sport" FromRole="Kind_sport" ToRole="Sport_club" />
+        </EntityType>
+        <EntityType Name="Sport_club">
+          <Key>
+            <PropertyRef Name="id_club" />
+          </Key>
+          <Property Name="id_club" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_kind" Type="Int32" />
+          <Property Name="Name_club" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Text_club" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate_club" Type="DateTime" Precision="3" />
+          <Property Name="Image_club" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Kind_sport" Relationship="Self.FK_Sport_club_Kind_sport" FromRole="Sport_club" ToRole="Kind_sport" />
+        </EntityType>
+        <Association Name="FK_Sport_club_Kind_sport">
+          <End Role="Kind_sport" Type="Self.Kind_sport" Multiplicity="0..1" />
+          <End Role="Sport_club" Type="Self.Sport_club" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kind_sport">
+              <PropertyRef Name="id_kind" />
+            </Principal>
+            <Dependent Role="Sport_club">
+              <PropertyRef Name="id_kind" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DotNetEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Kind_sport" EntityType="Self.Kind_sport" />
+          <EntitySet Name="Sport_club" EntityType="Self.Sport_club" />
+          <AssociationSet Name="FK_Sport_club_Kind_sport" Association="Self.FK_Sport_club_Kind_sport">
+            <End Role="Kind_sport" EntitySet="Kind_sport" />
+            <End Role="Sport_club" EntitySet="Sport_club" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DotNetModelContainer" CdmEntityContainer="DotNetEntities">
+          <EntitySetMapping Name="Kind_sport">
+            <EntityTypeMapping TypeName="DotNetModel.Kind_sport">
+              <MappingFragment StoreEntitySet="Kind_sport">
+                <ScalarProperty Name="id_kind" ColumnName="id_kind" />
+                <ScalarProperty Name="Name_kind" ColumnName="Name_kind" />
+                <ScalarProperty Name="Group_kind" ColumnName="Group_kind" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sport_club">
+            <EntityTypeMapping TypeName="DotNetModel.Sport_club">
+              <MappingFragment StoreEntitySet="Sport_club">
+                <ScalarProperty Name="id_club" ColumnName="id_club" />
+                <ScalarProperty Name="id_kind" ColumnName="id_kind" />
+                <ScalarProperty Name="Name_club" ColumnName="Name_club" />
+                <ScalarProperty Name="Text_club" ColumnName="Text_club" />
+                <ScalarProperty Name="CreateDate_club" ColumnName="CreateDate_club" />
+                <ScalarProperty Name="Image_club" ColumnName="Image_club" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
