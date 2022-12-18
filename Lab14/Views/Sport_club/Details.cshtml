@@ -1,0 +1,58 @@
+﻿@model Lab14.Sport_club
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sport_club</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name_club)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name_club)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Text_club)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Text_club)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate_club)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate_club)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_club)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image_club)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kind_sport.Name_kind)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kind_sport.Name_kind)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_club }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

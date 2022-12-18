@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Lab14.Sport_club>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+    <br></br>
+    @Html.ActionLink("Ссылка на Kind_sport", "Index", "Kind_sport", new { area = "" }, new { @class = "navbar-brand" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name_club)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Text_club)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate_club)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image_club)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kind_sport.Name_kind)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name_club)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Text_club)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate_club)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Image_club)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kind_sport.Name_kind)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_club }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_club }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_club })
+        </td>
+    </tr>
+}
+
+</table>
