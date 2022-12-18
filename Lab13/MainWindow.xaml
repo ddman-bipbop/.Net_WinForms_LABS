@@ -53,7 +53,7 @@
                         <Label Content="Photo:" Grid.Column="0" HorizontalAlignment="Left" Margin="25,0,0,0" VerticalAlignment="Center">
                             <Label.ContextMenu>
                                 <ContextMenu>
-                                    <Button Content="Загрузить" x:Name="loadImage" Click="LoadImage_OnClick" />
+                                    <Button Content="Загрузить" x:Name="loadImage" Click="loadImage_OnClick" />
                                 </ContextMenu>
                             </Label.ContextMenu>
                         </Label>

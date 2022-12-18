@@ -70,7 +70,7 @@ namespace Lab13
             }
             _commentDbDataSetCommentsTableAdapter.Update(_commentDbDataSet.Sport_club);
         }
-        private void LoadImage_OnClick(object sender, RoutedEventArgs e)
+        private void loadImage_OnClick(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
