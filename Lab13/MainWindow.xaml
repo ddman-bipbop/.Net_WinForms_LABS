@@ -1,0 +1,82 @@
+﻿<Window x:Class="Lab13.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab13"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:DataSet1 x:Key="DataSet1"/>
+        <CollectionViewSource x:Key="kindSportViewSource" Source="{Binding Kind_sport, Source={StaticResource DataSet1}}"/>
+        <CollectionViewSource x:Key="sportClubViewSource" Source="{Binding Sport_club, Source={StaticResource DataSet1}}"/>
+    </Window.Resources>
+    <Grid>
+        <TabControl x:Name="MainTabControl" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+            <TabItem Header="Спортивные клубы">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource sportClubViewSource}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="sportClubDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,36,230,36" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idKindColumn" Binding="{Binding id_kind}" Header="ID вида" Width="50"/>
+                            <DataGridTextColumn x:Name="nameClubColumn" Binding="{Binding Name_club}" Header="Название клуба" Width="100"/>
+                            <DataGridTextColumn x:Name="textClubColumn" Binding="{Binding Text_club}" Header="Описание" Width="150"/>
+                            <DataGridTemplateColumn x:Name="createDateColumn" Header="Дата" Width="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding CreateDate_club, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn x:Name="imageClubColumn" Header="Фотография" Width="120">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding Image_club}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="SaveSportClub" Grid.ColumnSpan="2" Content="Сохранить" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="SaveSportClub_Click"/>
+                    <Button x:Name="DeleteSportClub" Grid.ColumnSpan="2" Content="Удалить" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" Width="75" Click="DeleteSportClub_Click"/>
+                    <Grid x:Name="grid1" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,47,0,0" VerticalAlignment="Top" Height="264" Width="235">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Photo:" Grid.Column="0" HorizontalAlignment="Left" Margin="25,0,0,0" VerticalAlignment="Center">
+                            <Label.ContextMenu>
+                                <ContextMenu>
+                                    <Button Content="Загрузить" x:Name="loadImage" Click="LoadImage_OnClick" />
+                                </ContextMenu>
+                            </Label.ContextMenu>
+                        </Label>
+                        <Border BorderThickness="1"  Grid.Row="0" MinWidth="150" MinHeight="200" MaxWidth="150" MaxHeight="200" BorderBrush="Black" Grid.ColumnSpan="2" Margin="75,0,0,0" >
+                            <Image x:Name="photoImage" Margin="3" Source="{Binding Image_club}" MinWidth="150" MinHeight="200" MaxWidth="150" MaxHeight="200" Width="150" Height="200" HorizontalAlignment="Left" VerticalAlignment="Top">
+
+                            </Image>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Виды спорта">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource kindSportViewSource}">
+                    <DataGrid x:Name="kindSportDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,36,0,0" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="nameKindColumn" Binding="{Binding Name_kind}" Header="Название" Width="100"/>
+                            <DataGridTextColumn x:Name="groupKindColumn" Binding="{Binding Group_kind}" Header="Группа" Width="100"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="SaveKindSport" Content="Сохранить" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="SaveKindSport_Click"/>
+                    <Button x:Name="DeleteKindSport" Content="Удалить" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top" Width="75" Click="DeleteKindSport_Click"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
