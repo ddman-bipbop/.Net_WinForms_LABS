@@ -1,7 +1,7 @@
 ﻿var apiBaseUrl = "http://localhost:51570/api/";
 var usersUrl = apiBaseUrl + "kind_sport/";
 function reloadUserList() {
-	var usersList = $("#UsersList");
+	var usersList = $("#KindSportList");
 
 	if (usersList.length) { //Есть элемент для списка пользователей - значит мы на главной странице - можно загрузить список
 		$.ajax({
@@ -15,11 +15,11 @@ function reloadUserList() {
 				usersList.html("");
 				var html = "<span>" + itemsCount + "</span>";
 				//for (var i = 0; i < itemsCount; i++) {
-				//	var item = data[i];
-				//	var userId = item.UserId;
-				//	var firstName = item.FirstName;
-				//	var secondName = item.SecondName;
-				//	var lastName = item.LastName;
+				//	//var item = data[i];
+				//	var userId = "Debug";
+				//	var firstName = "Debug";
+				//	var secondName = "Debug";
+				//	var lastName = "Debug";
 				//	html += "<tr><td>" + lastName + "</td><td>" + firstName + "</td><td>" + secondName + "</td>";
 				//	html += "<td><a href='edit.html?id=" + userId + "'>Редактировать</a>&nbsp;<a href='#' class='delete_user' data-id='" + userId + "'>Удалить</a></td></tr>";
 				//}
