@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lab15
+namespace Lab15.Models
 {
     using System;
     using System.Data.Entity;

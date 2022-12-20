@@ -7,20 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lab15
+namespace Lab15.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Sport_club
+    public partial class Kind_sport
     {
-        public int id_club { get; set; }
-        public Nullable<int> id_kind { get; set; }
-        public string Name_club { get; set; }
-        public string Text_club { get; set; }
-        public Nullable<System.DateTime> CreateDate_club { get; set; }
-        public byte[] Image_club { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Kind_sport()
+        {
+            this.Sport_club = new HashSet<Sport_club>();
+        }
     
-        public virtual Kind_sport Kind_sport { get; set; }
+        public int id_kind { get; set; }
+        public string Name_kind { get; set; }
+        public string Group_kind { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sport_club> Sport_club { get; set; }
     }
 }

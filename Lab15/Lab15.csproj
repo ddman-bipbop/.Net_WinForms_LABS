@@ -175,26 +175,26 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Kind_sport.cs">
+    <Compile Include="Models\Kind_sport.cs">
       <DependentUpon>ModelSport.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelSport.Context.cs">
+    <Compile Include="Models\ModelSport.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelSport.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelSport.cs">
+    <Compile Include="Models\ModelSport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelSport.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelSport.Designer.cs">
+    <Compile Include="Models\ModelSport.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelSport.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sport_club.cs">
+    <Compile Include="Models\Sport_club.cs">
       <DependentUpon>ModelSport.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -209,12 +209,12 @@
     <Content Include="Global.asax" />
     <Content Include="KindSport\edit.html" />
     <Content Include="KindSport\index.html" />
-    <Content Include="ModelSport.Context.tt">
+    <Content Include="Models\ModelSport.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ModelSport.Context.cs</LastGenOutput>
       <DependentUpon>ModelSport.edmx</DependentUpon>
     </Content>
-    <Content Include="ModelSport.tt">
+    <Content Include="Models\ModelSport.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelSport.edmx</DependentUpon>
       <LastGenOutput>ModelSport.cs</LastGenOutput>
@@ -240,11 +240,11 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <EntityDeploy Include="ModelSport.edmx">
+    <EntityDeploy Include="Models\ModelSport.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelSport.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="ModelSport.edmx.diagram">
+    <Content Include="Models\ModelSport.edmx.diagram">
       <DependentUpon>ModelSport.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -271,7 +271,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

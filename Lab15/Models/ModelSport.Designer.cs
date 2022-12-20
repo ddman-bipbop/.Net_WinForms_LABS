@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Users\denbe\SFML_Game_Astreroid\WindowsFormsApp_FOR_LABS\Lab15\ModelSport.edmx" включено. 
+﻿// Создание кода T4 для модели "C:\Users\denbe\SFML_Game_Astreroid\WindowsFormsApp_FOR_LABS\Lab15\Models\ModelSport.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.

@@ -15,19 +15,19 @@ namespace Lab15.Controllers
 {
     public class Sport_clubController : ApiController
     {
-        private DotNetEntities db = new DotNetEntities();
+        private Models.DotNetEntities db = new Models.DotNetEntities();
 
         // GET: api/Sport_club
-        public IQueryable<Sport_club> GetSport_club()
+        public IQueryable<Models.Sport_club> GetSport_club()
         {
             return db.Sport_club;
         }
 
         // GET: api/Sport_club/5
-        [ResponseType(typeof(Sport_club))]
+        [ResponseType(typeof(Models.Sport_club))]
         public async Task<IHttpActionResult> GetSport_club(int id)
         {
-            Sport_club sport_club = await db.Sport_club.FindAsync(id);
+            Models.Sport_club sport_club = await db.Sport_club.FindAsync(id);
             if (sport_club == null)
             {
                 return NotFound();
@@ -38,7 +38,7 @@ namespace Lab15.Controllers
 
         // PUT: api/Sport_club/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutSport_club(int id, Sport_club sport_club)
+        public async Task<IHttpActionResult> PutSport_club(int id, Models.Sport_club sport_club)
         {
             if (!ModelState.IsValid)
             {
@@ -72,8 +72,8 @@ namespace Lab15.Controllers
         }
 
         // POST: api/Sport_club
-        [ResponseType(typeof(Sport_club))]
-        public async Task<IHttpActionResult> PostSport_club(Sport_club sport_club)
+        [ResponseType(typeof(Models.Sport_club))]
+        public async Task<IHttpActionResult> PostSport_club(Models.Sport_club sport_club)
         {
             if (!ModelState.IsValid)
             {
@@ -87,10 +87,10 @@ namespace Lab15.Controllers
         }
 
         // DELETE: api/Sport_club/5
-        [ResponseType(typeof(Sport_club))]
+        [ResponseType(typeof(Models.Sport_club))]
         public async Task<IHttpActionResult> DeleteSport_club(int id)
         {
-            Sport_club sport_club = await db.Sport_club.FindAsync(id);
+            Models.Sport_club sport_club = await db.Sport_club.FindAsync(id);
             if (sport_club == null)
             {
                 return NotFound();

@@ -11,23 +11,24 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Lab15;
 
+
 namespace Lab15.Controllers
 {
     public class Kind_sportController : ApiController
     {
-        private DotNetEntities db = new DotNetEntities();
+        private Models.DotNetEntities db = new Models.DotNetEntities();
 
         // GET: api/Kind_sport
-        public IQueryable<Kind_sport> GetKind_sport()
+        public IQueryable<Models.Kind_sport> GetKind_sport()
         {
             return db.Kind_sport;
         }
 
         // GET: api/Kind_sport/5
-        [ResponseType(typeof(Kind_sport))]
+        [ResponseType(typeof(Models.Kind_sport))]
         public async Task<IHttpActionResult> GetKind_sport(int id)
         {
-            Kind_sport kind_sport = await db.Kind_sport.FindAsync(id);
+            Models.Kind_sport kind_sport = await db.Kind_sport.FindAsync(id);
             if (kind_sport == null)
             {
                 return NotFound();
@@ -38,7 +39,7 @@ namespace Lab15.Controllers
 
         // PUT: api/Kind_sport/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutKind_sport(int id, Kind_sport kind_sport)
+        public async Task<IHttpActionResult> PutKind_sport(int id, Models.Kind_sport kind_sport)
         {
             if (!ModelState.IsValid)
             {
@@ -72,8 +73,8 @@ namespace Lab15.Controllers
         }
 
         // POST: api/Kind_sport
-        [ResponseType(typeof(Kind_sport))]
-        public async Task<IHttpActionResult> PostKind_sport(Kind_sport kind_sport)
+        [ResponseType(typeof(Models.Kind_sport))]
+        public async Task<IHttpActionResult> PostKind_sport(Models.Kind_sport kind_sport)
         {
             if (!ModelState.IsValid)
             {
@@ -87,10 +88,10 @@ namespace Lab15.Controllers
         }
 
         // DELETE: api/Kind_sport/5
-        [ResponseType(typeof(Kind_sport))]
+        [ResponseType(typeof(Models.Kind_sport))]
         public async Task<IHttpActionResult> DeleteKind_sport(int id)
         {
-            Kind_sport kind_sport = await db.Kind_sport.FindAsync(id);
+            Models.Kind_sport kind_sport = await db.Kind_sport.FindAsync(id);
             if (kind_sport == null)
             {
                 return NotFound();
