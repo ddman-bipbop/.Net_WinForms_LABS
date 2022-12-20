@@ -6,11 +6,36 @@ using System.Text;
 using System.Threading.Tasks;
 using ClassLibraryAuto;
 using Newtonsoft.Json;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Server
 {
     class Program
     {
+        private static string fileName = "db.json";
+        static void save_th()
+        {
+            while (true)
+            {
+                Thread.Sleep(10000);
+
+                try
+                {
+                    using (StreamWriter jsonStreamWriter = File.CreateText(fileName))
+                    {
+                        JsonSerializer jsonSerializer = new JsonSerializer { Formatting = Formatting.Indented };
+                        jsonSerializer.Serialize(jsonStreamWriter, _autos);
+                    }
+                    Console.WriteLine("Данные сохранены");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Не удалось сохранить данные!");
+                }
+            }
+        }
+
         private static ConcurrentDictionary<int, Auto> _autos = new ConcurrentDictionary<int, Auto>();
         static void Main(string[] args)
         {
@@ -27,6 +52,11 @@ namespace Server
             {
                 sListener.Bind(ipEndPoint);
                 sListener.Listen(10);
+
+                //запускаем сохранения раз в 10сек
+                Thread th = new Thread(save_th);
+                th.Start();
+
                 // Начинаем слушать соединения
                 while (true)
                 {
