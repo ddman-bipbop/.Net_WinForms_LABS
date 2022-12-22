@@ -21,7 +21,7 @@
                     </Grid.ColumnDefinitions>
                     <DataGrid x:Name="sportClubDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,36,230,36" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.ColumnSpan="2">
                         <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="idKindColumn" Binding="{Binding id_kind}" Header="ID вида" Width="50"/>
+                            <DataGridTextColumn x:Name="idKindColumn"  Binding="{Binding id_kind}" Header="ID вида" Width="50"/>
                             <DataGridTextColumn x:Name="nameClubColumn" Binding="{Binding Name_club}" Header="Название клуба" Width="100"/>
                             <DataGridTextColumn x:Name="textClubColumn" Binding="{Binding Text_club}" Header="Описание" Width="150"/>
                             <DataGridTemplateColumn x:Name="createDateColumn" Header="Дата" Width="100">
@@ -69,8 +69,9 @@
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource kindSportViewSource}">
                     <DataGrid x:Name="kindSportDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,36,0,0" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="nameKindColumn" Binding="{Binding Name_kind}" Header="Название" Width="100"/>
-                            <DataGridTextColumn x:Name="groupKindColumn" Binding="{Binding Group_kind}" Header="Группа" Width="100"/>
+                            <DataGridTextColumn x:Name="idKindSportColumn" Binding="{Binding id_kind}" Header="ID" Width="100"/>
+                            <DataGridTextColumn x:Name="nameKindSportColumn" Binding="{Binding Name_kind}" Header="Название" Width="100"/>
+                            <DataGridTextColumn x:Name="groupKindSportColumn" Binding="{Binding Group_kind}" Header="Группа" Width="100"/>
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button x:Name="SaveKindSport" Content="Сохранить" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="SaveKindSport_Click"/>
