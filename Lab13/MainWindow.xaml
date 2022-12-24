@@ -19,9 +19,11 @@
                         <ColumnDefinition Width="0*"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="sportClubDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,36,230,36" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.ColumnSpan="2">
+                    <DataGrid x:Name="sportClubDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,36,230,36" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.ColumnSpan="2" SelectionChanged="sportClubDataGrid_SelectionChanged">
                         <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="idKindColumn"  Binding="{Binding id_kind}" Header="ID вида" Width="50"/>
+
+                            <!--<DataGridTextColumn x:Name="idKindColumn"  Binding="{Binding id_kind}" Header="ID вида" Width="50"> -->
+                            <DataGridComboBoxColumn x:Name="idKindColumn" Header="Вид спорта" ItemsSource="{Binding Source={StaticResource kindSportViewSource}}" Width="150" DisplayMemberPath="Name_kind" SelectedValuePath="id_kind" SelectedValueBinding="{Binding id_kind}"/>
                             <DataGridTextColumn x:Name="nameClubColumn" Binding="{Binding Name_club}" Header="Название клуба" Width="100"/>
                             <DataGridTextColumn x:Name="textClubColumn" Binding="{Binding Text_club}" Header="Описание" Width="150"/>
                             <DataGridTemplateColumn x:Name="createDateColumn" Header="Дата" Width="100">
@@ -63,6 +65,7 @@
                             </Image>
                         </Border>
                     </Grid>
+                    
                 </Grid>
             </TabItem>
             <TabItem Header="Виды спорта">

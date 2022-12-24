@@ -112,5 +112,10 @@ namespace Lab13
             }
             _commentDbDataSetUsersTableAdapter.Update(_commentDbDataSet.Kind_sport);
         }
+
+        private void sportClubDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
