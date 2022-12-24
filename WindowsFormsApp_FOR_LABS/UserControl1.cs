@@ -14,6 +14,8 @@ namespace WindowsFormsApp_FOR_LABS
     {
         private readonly Workshop _hotel = Workshop.Instance;
         public Repair Settlement { get; }
+
+
         private bool _selected;
         public bool Selected
         {
